@@ -339,16 +339,6 @@ eval("// Exports\nmodule.exports = {\n\t\"style\": {\"fontFamily\":\"'__Quicksan
 
 /***/ }),
 
-/***/ "(ssr)/./node_modules/next/font/google/target.css?{\"path\":\"src\\\\app\\\\registro\\\\components\\\\hero\\\\Hero.jsx\",\"import\":\"Barlow\",\"arguments\":[{\"subsets\":[\"latin\"],\"weight\":\"400\"}],\"variableName\":\"barlow\"}":
-/*!*********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/font/google/target.css?{"path":"src\\app\\registro\\components\\hero\\Hero.jsx","import":"Barlow","arguments":[{"subsets":["latin"],"weight":"400"}],"variableName":"barlow"} ***!
-  \*********************************************************************************************************************************************************************************************************/
-/***/ ((module) => {
-
-eval("// Exports\nmodule.exports = {\n\t\"style\": {\"fontFamily\":\"'__Barlow_20ce59', '__Barlow_Fallback_20ce59'\",\"fontWeight\":400,\"fontStyle\":\"normal\"},\n\t\"className\": \"__className_20ce59\"\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9mb250L2dvb2dsZS90YXJnZXQuY3NzP3tcInBhdGhcIjpcInNyY1xcXFxhcHBcXFxccmVnaXN0cm9cXFxcY29tcG9uZW50c1xcXFxoZXJvXFxcXEhlcm8uanN4XCIsXCJpbXBvcnRcIjpcIkJhcmxvd1wiLFwiYXJndW1lbnRzXCI6W3tcInN1YnNldHNcIjpbXCJsYXRpblwiXSxcIndlaWdodFwiOlwiNDAwXCJ9XSxcInZhcmlhYmxlTmFtZVwiOlwiYmFybG93XCJ9IiwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQSxXQUFXLG1HQUFtRztBQUM5RztBQUNBIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vd2ViaW5hci1mcm9udGVuZC8uL25vZGVfbW9kdWxlcy9uZXh0L2ZvbnQvZ29vZ2xlL3RhcmdldC5jc3M/ZDEzYSJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBFeHBvcnRzXG5tb2R1bGUuZXhwb3J0cyA9IHtcblx0XCJzdHlsZVwiOiB7XCJmb250RmFtaWx5XCI6XCInX19CYXJsb3dfMjBjZTU5JywgJ19fQmFybG93X0ZhbGxiYWNrXzIwY2U1OSdcIixcImZvbnRXZWlnaHRcIjo0MDAsXCJmb250U3R5bGVcIjpcIm5vcm1hbFwifSxcblx0XCJjbGFzc05hbWVcIjogXCJfX2NsYXNzTmFtZV8yMGNlNTlcIlxufTtcbiJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/font/google/target.css?{\"path\":\"src\\\\app\\\\registro\\\\components\\\\hero\\\\Hero.jsx\",\"import\":\"Barlow\",\"arguments\":[{\"subsets\":[\"latin\"],\"weight\":\"400\"}],\"variableName\":\"barlow\"}\n");
-
-/***/ }),
-
 /***/ "(ssr)/./node_modules/next/dist/client/add-base-path.js":
 /*!********************************************************!*\
   !*** ./node_modules/next/dist/client/add-base-path.js ***!

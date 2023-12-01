@@ -30,13 +30,13 @@
 /*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/app/cierre-registro/cierreRegistro.css ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************/
-.gracias {
+.cierre-registro {
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
 }
 
-.gracias__header {
+.cierre-registro__header {
   background: linear-gradient(
     56deg,
     rgba(0, 8, 33, 1) 0%,
@@ -45,28 +45,28 @@
   padding: 3%;
 }
 
-.gracias__title {
+.cierre-registro__title {
   font-weight: 500;
   font-size: 2rem;
   text-align: center;
   color: #ffe3bc;
 }
 
-.gracias__title_accent {
+.cierre-registro__title_accent {
   font-weight: 700;
   color: #e17900;
 }
 
-.gracias__subtitle {
+.cierre-registro__subtitle {
   font-size: 1.3rem;
   text-align: center;
 }
 
-.gracias__subtitle_accent {
+.cierre-registro__subtitle_accent {
   font-weight: 700;
 }
 
-.gracias__body {
+.cierre-registro__body {
   background-image: url(/_next/static/media/fondo.a5ea311c.webp);
   background-attachment: fixed;
   background-position: center;
@@ -81,7 +81,7 @@
   position: relative;
 }
 
-.gracias__recordatorio-text {
+.cierre-registro__recordatorio-text {
   color: #ffe3bc;
   text-align: center;
   margin: 0;
@@ -89,19 +89,19 @@
   margin-bottom: 1em;
 }
 
-.gracias__recordatorio-text_lg {
+.cierre-registro__recordatorio-text_lg {
   font-weight: 600;
   font-size: 1.7rem;
 }
 
-.gracias__container {
+.cierre-registro__container {
   position: relative;
   width: 60%;
   padding: 1%;
   margin-bottom: 3em;
 }
 
-.gracias__overlay {
+.cierre-registro__overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -113,14 +113,14 @@
   mix-blend-mode: soft-light;
 }
 
-.gracias__btn-container {
+.cierre-registro__btn-container {
   margin-bottom: 1em;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.gracias__btn {
+.cierre-registro__btn {
   background-color: #e17900;
   padding: 0.5em 2em;
   font-size: 1.5rem;
@@ -132,50 +132,51 @@
   text-align: center;
 }
 
-.gracias__recordatorio-text_dates {
+.cierre-registro__recordatorio-text_dates {
   color: #4c73f1;
   font-size: 1.5rem;
+  text-shadow: 1px 1px #ffe3bc;
 }
 
-.gracias__credits {
+.cierre-registro__credits {
   margin: 0;
   text-align: end;
 }
 
-.gracias__credits-container {
+.cierre-registro__credits-container {
   align-self: flex-end;
   position: absolute;
   bottom: 5px;
 }
 
 @media screen and (max-width: 600px) {
-  .gracias__title {
+  .cierre-registro__title {
     font-size: 1.5rem;
   }
 
-  .gracias__subtitle {
+  .cierre-registro__subtitle {
     font-size: 1rem;
   }
 
-  .gracias__recordatorio-text_lg {
+  .cierre-registro__recordatorio-text_lg {
     font-size: 1.3rem;
   }
 
-  .gracias__recordatorio-text {
+  .cierre-registro__recordatorio-text {
     font-size: 1rem;
   }
 
-  .gracias__btn {
+  .cierre-registro__btn {
     font-size: 1rem;
   }
 
-  .gracias__credits {
+  .cierre-registro__credits {
     font-size: 0.8rem;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .gracias__container {
+  .cierre-registro__container {
     width: 90%;
   }
 }

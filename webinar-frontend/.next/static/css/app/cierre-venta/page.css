@@ -1,0 +1,217 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/footer/footer.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+.footer {
+  background-color: #000821;
+  min-height: 5em;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4em;
+  align-items: center;
+}
+
+.footer__credits {
+  text-align: center;
+  margin: 0;
+}
+
+.footer__logo {
+  height: -moz-fit-content;
+  height: fit-content;
+  min-width: 10em;
+  width: 25%;
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    flex-direction: column;
+    padding: 0 1 em;
+  }
+  .footer__logo {
+    margin: 1em;
+    width: 80%;
+  }
+
+  .footer__credits {
+    font-size: 0.8rem;
+    padding: 1em;
+  }
+}
+
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/app/cierre-venta/cierreVenta.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+.cierre-venta {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.cierre-venta__header {
+  /* background: linear-gradient(
+    56deg,
+    rgba(0, 8, 33, 1) 0%,
+    rgba(7, 26, 85, 1) 50%
+  ); */
+  background-image: url(/_next/static/media/fondoBio.f6dc67c1.webp);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.cierre-venta__logo {
+  width: 60%;
+  height: -moz-fit-content;
+  height: fit-content;
+  align-self: center;
+  background: linear-gradient(
+    56deg,
+    rgba(7, 26, 85, 1) 0%,
+    rgba(0, 8, 33, 1) 60%
+  );
+  border-radius: 25px;
+  padding: 0.5em 1em;
+}
+
+.cierre-venta__title {
+  font-weight: 500;
+  font-size: 2rem;
+  text-align: center;
+  color: #000821;
+}
+
+.cierre-venta__title_accent {
+  font-weight: 700;
+  color: #e17900;
+}
+
+.cierre-venta__subtitle {
+  font-size: 1.3rem;
+  text-align: center;
+  color: #000821;
+}
+
+.cierre-venta__subtitle_accent {
+  font-weight: 700;
+}
+
+.cierre-venta__body {
+  background-image: url(/_next/static/media/fondo.a5ea311c.webp);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  padding: 5% 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: -2;
+  position: relative;
+}
+
+.cierre-venta__recordatorio-text {
+  color: #ffe3bc;
+  text-align: center;
+  margin: 0;
+  font-size: 1.3rem;
+  margin-bottom: 1em;
+}
+
+.cierre-venta__recordatorio-text_lg {
+  font-weight: 600;
+  font-size: 1.7rem;
+}
+
+.cierre-venta__container {
+  position: relative;
+  width: 60%;
+  padding: 1%;
+  margin-bottom: 3em;
+}
+
+.cierre-venta__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000821;
+  z-index: -1;
+  border-radius: 5px;
+  mix-blend-mode: soft-light;
+}
+
+.cierre-venta__btn-container {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cierre-venta__btn {
+  background-color: #e17900;
+  padding: 0.5em 2em;
+  font-size: 1.5rem;
+  border-radius: 0.5em;
+  color: #ffe3bc;
+  margin: 1rem 0 2rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.cierre-venta__recordatorio-text_dates {
+  color: #4c73f1;
+  font-size: 1.5rem;
+  text-shadow: 1px 1px #ffe3bc;
+}
+
+.cierre-venta__credits {
+  margin: 0;
+  text-align: end;
+}
+
+.cierre-venta__credits-container {
+  align-self: flex-end;
+  position: absolute;
+  bottom: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .cierre-venta__title {
+    font-size: 1.5rem;
+  }
+
+  .cierre-venta__subtitle {
+    font-size: 1rem;
+  }
+
+  .cierre-venta__recordatorio-text_lg {
+    font-size: 1.3rem;
+  }
+
+  .cierre-venta__recordatorio-text {
+    font-size: 1rem;
+  }
+
+  .cierre-venta__btn {
+    font-size: 1rem;
+  }
+
+  .cierre-venta__credits {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .cierre-venta__container {
+    width: 90%;
+  }
+}
+
