@@ -1,0 +1,25 @@
+.footer {
+  background-color: #000821;
+  min-height: 5em;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 4em;
+  align-items: center;
+}
+
+.footer__credits {
+  text-align: center;
+  margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    flex-direction: column;
+    padding: 0 1 em;
+  }
+
+  .footer__credits {
+    font-size: 0.8rem;
+    padding: 1em;
+  }
+}

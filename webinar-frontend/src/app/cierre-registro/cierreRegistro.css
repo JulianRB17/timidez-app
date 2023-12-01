@@ -1,0 +1,149 @@
+.gracias {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.gracias__header {
+  background: linear-gradient(
+    56deg,
+    rgba(0, 8, 33, 1) 0%,
+    rgba(7, 26, 85, 1) 50%
+  );
+  padding: 3%;
+}
+
+.gracias__title {
+  font-weight: 500;
+  font-size: 2rem;
+  text-align: center;
+  color: #ffe3bc;
+}
+
+.gracias__title_accent {
+  font-weight: 700;
+  color: #e17900;
+}
+
+.gracias__subtitle {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.gracias__subtitle_accent {
+  font-weight: 700;
+}
+
+.gracias__body {
+  background-image: url(../../../public/fondo.webp);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  padding: 5% 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: -2;
+  position: relative;
+}
+
+.gracias__recordatorio-text {
+  color: #ffe3bc;
+  text-align: center;
+  margin: 0;
+  font-size: 1.3rem;
+  margin-bottom: 1em;
+}
+
+.gracias__recordatorio-text_lg {
+  font-weight: 600;
+  font-size: 1.7rem;
+}
+
+.gracias__container {
+  position: relative;
+  width: 60%;
+  padding: 1%;
+  margin-bottom: 3em;
+}
+
+.gracias__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000821;
+  z-index: -1;
+  border-radius: 5px;
+  mix-blend-mode: soft-light;
+}
+
+.gracias__btn-container {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gracias__btn {
+  background-color: #e17900;
+  padding: 0.5em 2em;
+  font-size: 1.5rem;
+  border-radius: 0.5em;
+  color: #ffe3bc;
+  margin: 1rem 0 2rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.gracias__recordatorio-text_dates {
+  color: #4c73f1;
+  font-size: 1.5rem;
+}
+
+.gracias__credits {
+  margin: 0;
+  text-align: end;
+}
+
+.gracias__credits-container {
+  align-self: flex-end;
+  position: absolute;
+  bottom: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .gracias__title {
+    font-size: 1.5rem;
+  }
+
+  .gracias__subtitle {
+    font-size: 1rem;
+  }
+
+  .gracias__recordatorio-text_lg {
+    font-size: 1.3rem;
+  }
+
+  .gracias__recordatorio-text {
+    font-size: 1rem;
+  }
+
+  .gracias__btn {
+    font-size: 1rem;
+  }
+
+  .gracias__credits {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .gracias__container {
+    width: 90%;
+  }
+}

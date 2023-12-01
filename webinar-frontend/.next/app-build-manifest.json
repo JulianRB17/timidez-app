@@ -1,0 +1,28 @@
+{
+  "pages": {
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/ventas-l/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/ventas-l/page.css",
+      "static/chunks/app/ventas-l/page.js"
+    ],
+    "/registro/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/registro/page.css",
+      "static/chunks/app/registro/page.js"
+    ],
+    "/cierre-registro/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/cierre-registro/page.css",
+      "static/chunks/app/cierre-registro/page.js"
+    ]
+  }
+}

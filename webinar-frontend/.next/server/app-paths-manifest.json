@@ -1,0 +1,5 @@
+{
+  "/ventas-l/page": "app/ventas-l/page.js",
+  "/registro/page": "app/registro/page.js",
+  "/cierre-registro/page": "app/cierre-registro/page.js"
+}

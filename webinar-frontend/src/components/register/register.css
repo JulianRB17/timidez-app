@@ -1,0 +1,50 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 65%;
+  margin: 2em auto 1em;
+}
+
+.register__text {
+  margin: 1em 0 0 0;
+  text-align: center;
+  color: #ffe3bc;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.register__btn {
+  align-self: center;
+  margin: 1em auto;
+  padding: 1em 3em;
+  color: #071a55;
+  border: none;
+  border-radius: 7px;
+  background-color: #ffe3bc;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 1079px) {
+  .register__btn {
+    font-size: 15px;
+  }
+
+  .register__text {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .register {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .register {
+    width: 100%;
+    margin-top: 0;
+  }
+}
