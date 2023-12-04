@@ -24,6 +24,32 @@ const error404 = function (err) {
   err.message = 'No se ha encontrado ningún usuario con ese ID';
 };
 
+const activateUser = async function (res) {
+  await User.findOneAndUpdate({ email: email }, (active = true));
+  res.send('Usuario registrado correctamente');
+};
+
+const createAdminUser = async function (password, res) {
+  const hash = await bcrypt.hash(password, 10);
+  const newUser = await User.create({
+    username,
+    email,
+    password: hash,
+  });
+  const token = jwt.sign({ _id: newUser._id }, JWT_SECRET, {
+    expiresIn: '7d',
+  });
+  res.send({ token });
+};
+
+const registerUser = async function (username, email, res) {
+  await User.create({
+    username,
+    email,
+  });
+  res.send('Usuario registrado correctamente');
+};
+
 const getUsers = async function (req, res, next) {
   try {
     const users = await User.find({});
@@ -45,36 +71,15 @@ const getCurrentUser = async function (req, res, next) {
 
 const createUser = async function (req, res, next) {
   try {
-    const {username, password, email} = req.body
-    const currentUser = await User.findById(req.user._id);
+    const { username, password, email } = req.body;
+    const currentUser = await User.find({ email: email });
 
-    if (currentUser) {
-      await User.findByIdAndUpdate(req.user._id, active = true)
-      res.send('Usuario registrado correctamente');
-    }
-    
-    let hash;
-    if (password) {
-      hash = await bcrypt.hash(password, 10);
-      const newUser = await User.create({
-        username,
-        email,
-        password: hash,
-      });
-      const token = jwt.sign({ _id: newUser._id }, JWT_SECRET, {
-        expiresIn: '7d',
-      });
-      res.send({ token });
-    } else {
-      await User.create({
-        username,
-        email,
-        password: false,
-      });
-      res.send('Usuario registrado correctamente');
+    if (currentUser) activateUser(res);
+
+    if (password) createAdminUser(password, res);
+    else registerUser(username, email, res);
 
     // Crear función de crear usuario y mandar mail que se repetirá en los tres casos
-    }
   } catch (err) {
     if (err.code === 401) {
       error401(err, 'Ya existe un usuario con este email');
@@ -91,9 +96,9 @@ const login = async function (req, res, next) {
   const errMessage = 'Email o contraseña incorrectos';
   try {
     const user = await User.findOne({ email }).select('+password');
-    if (!user) throw new Error('Invalid email or password');
+    if (!user) throw new Error('Email o contraseña incorrectos');
     const matched = await bcrypt.compare(password, user.password);
-    if (!matched) throw new Error('Invalid email or password');
+    if (!matched) throw new Error('Email o contraseña incorrectos');
     const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
       expiresIn: '7d',
     });
@@ -108,15 +113,8 @@ const login = async function (req, res, next) {
 
 const deleteUser = async function (req, res, next) {
   try {
-    // const admin = await User.findById
-    // Que sólo sea un admin que pueda borrar
-    const user = await User.findById(req.params.id);
-    if (!user) throw new Error('User not found');
-    if (!user._id.equals(req.user._id)) throw new Error('Usuario no válido');
-    else {
-      const deletedUser = await User.findOneAndDelete({ _id: req.params.id });
-      res.send({ deletedUser });
-    }
+    const deletedUser = await User.findOneAndDelete({ _id: req.params.id });
+    res.send({ deletedUser });
   } catch (err) {
     if (err.name === 'CastError') {
       error404(err);
@@ -132,13 +130,9 @@ const deleteUser = async function (req, res, next) {
 };
 
 module.exports = {
-  getUserById,
   getCurrentUser,
   getUsers,
   createUser,
-  updateUser,
   deleteUser,
   login,
-  userUpdateColaborateIn,
-  userUpdateCreateProyect,
 };
