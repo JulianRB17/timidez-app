@@ -52,7 +52,7 @@ export default function CallToAction() {
           initial={{ opacity: 0.5 }}
           whileInView={{
             opacity: 1,
-            transition: { duration: 2 },
+            transition: { duration: 1 },
           }}
           whileTap={{ scale: 0.9 }}
           whileHover={{ scale: 1.2 }}

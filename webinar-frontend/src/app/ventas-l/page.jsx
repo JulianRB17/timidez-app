@@ -11,6 +11,7 @@ import Precio from '@/components/precio/Precio';
 import Faqs from '@/components/faqs/Faqs';
 import CallToAction from '@/components/callToAction/CallToAction';
 import Footer from '@/components/footer/Footer';
+import Info from './../../components/info/Info';
 
 export default function Page() {
   return (
@@ -20,6 +21,7 @@ export default function Page() {
       <Justificacion />
       <Bio />
       <Venta />
+      <Info />
       <CallToActionSm />
       <Bonos />
       <Garantia />

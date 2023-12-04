@@ -1,7 +1,7 @@
 .hero {
   background-image: url(../../../public/fondo-ventas.webp);
   min-height: 100vh;
-  width: 100%;
+
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -9,7 +9,6 @@
   padding: 0 5%;
   display: flex;
   flex-direction: column;
-  width: 90%;
 }
 
 .hero__hook-container {

@@ -6,18 +6,6 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/cierre-registro/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/cierre-registro/page.css",
-      "static/chunks/app/cierre-registro/page.js"
-    ],
-    "/cierre-venta/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/cierre-venta/page.css",
-      "static/chunks/app/cierre-venta/page.js"
-    ],
     "/ventas-l/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

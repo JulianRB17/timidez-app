@@ -190,6 +190,262 @@ export default function Info() {
           se ha trabajado. Porque sí: es un curso teórico/práctico. RECUERDA:
           ACCIONAR ES FUNDAMENTAL.
         </motion.p>
+        <motion.h3
+          className="info__title"
+          initial={{ opacity: 0.5, y: '-0.5rem' }}
+          whileInView={{ opacity: 1, y: 0, transition: { duration: 1 } }}
+        >
+          MÓDULOS
+        </motion.h3>
+        <motion.p
+          className="info__text"
+          initial={{ opacity: 0.5, x: '-0.5rem' }}
+          whileInView={{ opacity: 1, x: 0, transition: { duration: 1 } }}
+        >
+          El programa está dividido en 11 módulos que se revisarán a lo largo de
+          11 semana:
+        </motion.p>
+        <motion.ul className="info__list">
+          <motion.div
+            className="info__element"
+            initial={{ y: '0.5rem' }}
+            whileInView={{ y: 0, transition: { duration: 1 } }}
+          >
+            <p className="info__subtitle">MÓDULO 1: ¿Qué es la timidez? </p>
+            <p className="info__text">
+              Se aprenderá de manera teórica qué es la timidez, la diferencia
+              con el ser introvertido porque sí: puede haber gente extrovertida
+              y tímida (yo, por ejemplo). También el porque ésta nos paraliza y
+              a veces domina. Aprenderás cómo le hacemos actores y actrices para
+              enfrentarnos al pánico escénico.
+            </p>
+            <p className="info__text">
+              Descubrirás por qué la timidez NO es mala y empezarás a dialogar
+              mejor con ella.
+            </p>
+          </motion.div>
+          <motion.div
+            className="info__element"
+            initial={{ y: '0.5rem' }}
+            whileInView={{ y: 0, transition: { duration: 1 } }}
+          >
+            <p className="info__subtitle">MÓDULO 2: Reconocer mi voz</p>
+            <p className="info__text">
+              El mundo está constituido por una gran cantidad de personas
+              tímidaz, sin embargo no está hecho para éstas. Durante este módulo
+              aprenderás cómo darle lugar a tu voz en un mundo que está
+              estructurado para acallarla.{' '}
+            </p>
+            <p className="info__text">
+              Empezaremos con la escritura, abrazaremos las ventajas de la
+              tecnología de nuestros tiempos y aprenderemos a fluir con las
+              palabras. Para ello veremos cómo están estructuradas las grandes y
+              pequeñas historias desde hace más de dos mil años. Esto será muy
+              útil al momento de hablar con alguien más: darle sentido a las
+              ideas.
+            </p>
+            <p className="info__text">
+              También generarás una pequeña frase que pueda ayudarte en los
+              momentos donde tengas una sensación muy fuerte que te sobrepase,
+              que te abrume o paralice. Una especie de ritual personal para
+              aterrizar. Será un espacio donde le daremos fuerza a tus palabras.
+            </p>
+          </motion.div>
+          <motion.div
+            className="info__element"
+            initial={{ y: '0.5rem' }}
+            whileInView={{ y: 0, transition: { duration: 1 } }}
+          >
+            <p className="info__subtitle">MÓDULO 3: ¿De verdad actuar?</p>
+            <p className="info__text">
+              Ahora sí entraremos al mundo actoral. Aprenderás qué es la
+              actuación y por qué ésta implica arrancarse máscaras sociales.
+              Cómo es que actrices y actores juegan con su identidad. También
+              entenderás cómo puedes usar éstas herramientas para la vida
+              diaria: accionar en lugar de sobrepensar.
+            </p>
+            <p className="info__text">
+              ¿Alguna vez te ha pasado que no tienes idea de qué hacer con las
+              manos, con la mirada, con la respiración cuando hablas con
+              alguien? Adquirirás técnicas que te permitirán darle el lugar a tu
+              cuerpo de expresarte y dejar de sentirte un ladrillo con
+              pensamientos.
+            </p>
+          </motion.div>
+          <motion.div
+            className="info__element"
+            initial={{ y: '0.5rem' }}
+            whileInView={{ y: 0, transition: { duration: 1 } }}
+          >
+            <p className="info__subtitle">MÓDULO 4: El mundo interno</p>
+            <p className="info__text">
+              Como la ciencia se encarga de estudiar y entender la realidad, la
+              psicología, parte de la filosofía y el arte se dedican a entender
+              ese mundo que se encuentra construido dentro de cada persona. A
+              ese universo individual le llamamos mundo interno. A través de
+              aprender a relacionarte con él a través de la imaginación es
+              posible empoderarte en el mundo real. La inteligencia
+              intrapersonal -la capacidad de profundizar el vínculo que tiene
+              cada persona consigo misma- e interpersonal -la capacidad de
+              profundizar y generar vínculos con otras personas- están
+              profundamente relacionadas.
+            </p>
+            <p className="info__text">
+              Durante este módulo aprenderás herramientas para conectar con tu
+              mundo interno y así entrever y empezar a fragmentar algunas
+              barreras internas que la timidez ha colocado por miedo.
+            </p>
+          </motion.div>
+          <motion.div
+            className="info__element"
+            initial={{ y: '0.5rem' }}
+            whileInView={{ y: 0, transition: { duration: 1 } }}
+          >
+            <p className="info__subtitle">
+              MÓDULO 5: Descubriendo el personaje
+            </p>
+            <p className="info__text">
+              Es muy difícil pensar en actuar y no pensar en personaje, ese ser
+              que es y no la persona que lo encarna. ¿Cómo puedes ser otra
+              persona siendo tú? En este módulo entenderás cómo se puede
+              construir un personaje, la diferencia entre personajes simples y
+              complejos, el por qué algunos personajes hacen que nos
+              encariñemos.
+            </p>
+            <p className="info__text">
+              Empezaremos con un juego donde estarás protegida/o por las
+              estructuras de la ficción y esto te permitirá traspasar algunas
+              barreras establecidas por la timidez para descubrir que, aunque
+              aterrador, el miedo a veces es desmedidamente alto en relación a
+              la situación. Jugarás con tu cuerpo y voz pero la virtualidad te
+              permitirá sentirte en un espacio de seguridad.
+            </p>
+          </motion.div>
+          <motion.div
+            className="info__element"
+            initial={{ y: '0.5rem' }}
+            whileInView={{ y: 0, transition: { duration: 1 } }}
+          >
+            <p className="info__subtitle">
+              MÓDULO 6: Habla y escucha: voz y retroalimentación
+            </p>
+            <p className="info__text">
+              La gente tímida muchas veces somos gente profundamente cruel con
+              nosotras/os mismas/os. A lo largo de este módulo, por un lado
+              atenderemos la potencia de la palabra y distinguiremos la
+              responsabilidad que implica nuestra habla. Por otro lado le
+              prestaremos atención a la escucha y, también, a la responsabilidad
+              que tenemos con ésta.
+            </p>
+            <p className="info__text">
+              Aprenderás a autorreferirte desde un lugar menos cruel y mucho más
+              objetivo, usaremos tres preguntas concretas que formarán la base
+              de una verdadera crítica constructiva. Y, aunque no lo creas, esto
+              nos permitirá abrazar de una manera mucho más funcional la
+              sensación de ridículo: un error no siempre tiene consecuencias
+              catastróficas.
+            </p>
+          </motion.div>
+          <motion.div
+            className="info__element"
+            initial={{ y: '0.5rem' }}
+            whileInView={{ y: 0, transition: { duration: 1 } }}
+          >
+            <p className="info__subtitle">
+              MÓDULO 7: Del texto al cuerpo, tus palabras
+            </p>
+            <p className="info__text">
+              Hay veces en la vida en la que desearíamos que alguien nos dijera
+              qué decir para salir bien de alguna situación. La cosa es que,
+              cuando esto sucede, no es tan fácil como aparenta el apropiarse de
+              esas palabras. Pensemos en un contexto no actoral: una
+              conferencia, por ejemplo, ¿quién no ha estado en una que es
+              profpundamente aburrida porque quien está dándola sólo está
+              leyendo?
+            </p>
+            <p className="info__text">
+              A lo largo de este módulo aprenderás cómo volver personal un
+              texto, el primer paso es entender lo que está escrito, el segundo
+              tiene que ver con una habilidad que las personas tímidaz tenemos
+              más desarrolladas que nuestras contrapartes: la empatía, a través
+              de ésta y de la imaginación entenderás cómo captar la atención de
+              quienes te escuchan: reconocer los dolores personales y volverlos
+              universales.
+            </p>
+          </motion.div>
+          <motion.div
+            className="info__element"
+            initial={{ y: '0.5rem' }}
+            whileInView={{ y: 0, transition: { duration: 1 } }}
+          >
+            <p className="info__subtitle">
+              MÓDULO 8: Accionar, siempre accionar
+            </p>
+            <p className="info__text">
+              ¿Te has dado cuenta cómo la gente que no es tímida acciona sin
+              pensar mientras que la gente tímida piensa sin accionar? El paso
+              más difícil es la acción y es también el paso más importante. Hay
+              que encontrar el equilibrio entre silencio y acción.
+            </p>
+            <p className="info__text">
+              En este módulo reconocerás la importancia de las acciones que ya
+              estás realizando y entenderás cómo se pueden gestionar los
+              objetivos para poder concretarlas. Trabajaremos con un texto
+              actoral pero son herramientas que trasladaremos a la vida.
+            </p>
+          </motion.div>
+          <motion.div
+            className="info__element"
+            initial={{ y: '0.5rem' }}
+            whileInView={{ y: 0, transition: { duration: 1 } }}
+          >
+            <p className="info__subtitle">
+              MÓDULO 9: Primer espacio de seguridad
+            </p>
+            <p className="info__text">
+              Éste y los siguientes módulos implican llevar a la práctica todo
+              lo aprendido previamente. Recuerda: accionar es lo más importante.
+              También me es necesario volver a mencionar el espacio de seguridad
+              que se construye para que la acción y tú como persona sean
+              protegidas. Es un espacio donde se generarán experiencias únicas y
+              entenderás en la piel la belleza de encarnar a un otro ser.
+            </p>
+          </motion.div>
+          <motion.div
+            className="info__element"
+            initial={{ y: '0.5rem' }}
+            whileInView={{ y: 0, transition: { duration: 1 } }}
+          >
+            <p className="info__subtitle">
+              MÓDULO 10: Segundo espacio de seguridad
+            </p>
+            <p className="info__text">
+              Éste y los siguientes módulos implican llevar a la práctica todo
+              lo aprendido previamente. Recuerda: accionar es lo más importante.
+              También me es necesario volver a mencionar el espacio de seguridad
+              que se construye para que la acción y tú como persona sean
+              protegidas. Es un espacio donde se generarán experiencias únicas y
+              entenderás en la piel la belleza de encarnar a un otro ser.
+            </p>
+          </motion.div>
+          <motion.div
+            className="info__element"
+            initial={{ y: '0.5rem' }}
+            whileInView={{ y: 0, transition: { duration: 1 } }}
+          >
+            <p className="info__subtitle">
+              MÓDULO 11: Tercer espacio de seguridad
+            </p>
+            <p className="info__text">
+              Éste y los siguientes módulos implican llevar a la práctica todo
+              lo aprendido previamente. Recuerda: accionar es lo más importante.
+              También me es necesario volver a mencionar el espacio de seguridad
+              que se construye para que la acción y tú como persona sean
+              protegidas. Es un espacio donde se generarán experiencias únicas y
+              entenderás en la piel la belleza de encarnar a un otro ser.
+            </p>
+          </motion.div>
+        </motion.ul>
       </div>
     </section>
   );

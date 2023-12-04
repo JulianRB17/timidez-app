@@ -23,7 +23,8 @@ export default function Page() {
           >
             ¡Felicidades y cierre-registro por registrarte al curso gratuito{' '}
             <span className="cierre-registro__title_accent">
-              NOMBRE WEBINAR
+              3 secretos de actrices y actores para hablar en público y no morir
+              de vergüenza en el intento (aunque nunca hayas actuado)
             </span>
           </motion.h2>
 
@@ -42,11 +43,12 @@ export default function Page() {
           </motion.p>
         </div>
         <div className="cierre-registro__body">
-          <div className="cierre-registro__container">
+          <div className="cierre-registro__overlay-container">
             <div className="cierre-registro__overlay" />
             <motion.div
               initial={{ y: '100px', opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1, transition: { duration: 2 } }}
+              whileInView={{ y: 0, opacity: 1, transition: { duration: 1 } }}
+              className="cierre-registro__container"
             >
               <h2 className="cierre-registro__recordatorio-text cierre-registro__recordatorio-text_lg">
                 Recuerda apartar la fecha del curso:
@@ -58,33 +60,54 @@ export default function Page() {
                 20:30 hrs (horario CDMX, México)
               </p>
               <p className="cierre-registro__recordatorio-text">
-                El taller se llevará a cabo en el siguiente grupo privado de
+                El curso se llevará a cabo en el siguiente grupo privado de
                 Facebook:
               </p>
-              <div className="cierre-registro__btn-container">
-                <Link className="cierre-registro__btn" href="/">
-                  Únete al grupo de fb
-                </Link>
-              </div>
+              <motion.button
+                className="cierre-registro__btn"
+                initial={{ opacity: 0.5 }}
+                whileInView={{
+                  opacity: 1,
+                  transition: { duration: 1 },
+                }}
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.2 }}
+              >
+                Únete al grupo de fb
+              </motion.button>
               <p className="cierre-registro__recordatorio-text">
                 También te recomiendo unirte al siguiente grupo de Whatsapp:
               </p>
-              <div className="cierre-registro__btn-container">
-                <Link className="cierre-registro__btn" href="/">
-                  Únete al grupo de whatsapp
-                </Link>
-              </div>
+              <motion.button
+                className="cierre-registro__btn"
+                initial={{ opacity: 0.5 }}
+                whileInView={{
+                  opacity: 1,
+                  transition: { duration: 1 },
+                }}
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.2 }}
+              >
+                Únete al grupo de whatsapp
+              </motion.button>
               <p className="cierre-registro__recordatorio-text">
                 {' '}
                 Quiero que la información que te entregue sea la mejor posible y
                 la más útil para ti, por ello, te pido que me ayudes contestando
                 las siguientes 3 preguntas, te tomará menos de 5 min.
               </p>
-              <div className="cierre-registro__btn-container">
-                <Link className="cierre-registro__btn" href="/">
-                  ¡Ayúdame respondiendo esta encuesta!
-                </Link>
-              </div>
+              <motion.button
+                className="cierre-registro__btn"
+                initial={{ opacity: 0.5 }}
+                whileInView={{
+                  opacity: 1,
+                  transition: { duration: 1 },
+                }}
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.2 }}
+              >
+                ¡Ayúdame respondiendo esta encuesta!
+              </motion.button>
 
               <p className="cierre-registro__recordatorio-text cierre-registro__recordatorio-text_lg">
                 ¡Nos vemos muy pronto!

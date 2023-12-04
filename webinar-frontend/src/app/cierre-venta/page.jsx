@@ -52,11 +52,12 @@ export default function Page() {
           </motion.p>
         </div>
         <div className="cierre-venta__body">
-          <div className="cierre-venta__container">
+          <div className="cierre-venta__overlay-container">
             <div className="cierre-venta__overlay" />
             <motion.div
               initial={{ y: '100px', opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1, transition: { duration: 2 } }}
+              whileInView={{ y: 0, opacity: 1, transition: { duration: 1 } }}
+              className="cierre-venta__container"
             >
               <h2 className="cierre-venta__recordatorio-text cierre-venta__recordatorio-text_lg">
                 Se te ha mandado un mail con toda la información importante.
@@ -72,11 +73,18 @@ export default function Page() {
                 importante a través de un grupo privado de Facebook. Te dejo
                 aquí el link a éste.
               </p>
-              <div className="cierre-venta__btn-container">
-                <Link className="cierre-venta__btn" href="/">
-                  Únete al grupo de Fb
-                </Link>
-              </div>
+              <motion.button
+                className="cierre-venta__btn"
+                initial={{ opacity: 0.5 }}
+                whileInView={{
+                  opacity: 1,
+                  transition: { duration: 1 },
+                }}
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.2 }}
+              >
+                Únete al grupo de Fb
+              </motion.button>
               <p className="cierre-venta__recordatorio-text">
                 En éste podrás hacer preguntas en cualquier momento, a parte de
                 leer las dudas de otras personas y, finalmente es un espacio que
