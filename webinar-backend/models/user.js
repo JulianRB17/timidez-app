@@ -22,6 +22,22 @@ const userSchema = new mongoose.Schema({
     type: String,
     select: false,
   },
+  new: {
+    type: Boolean,
+    default: true,
+  },
+  active: {
+    type: Boolean,
+    default: true,
+  },
+  client: {
+    type: Boolean,
+    default: false,
+  },
+  disengaged: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model('user', userSchema);

@@ -25,8 +25,32 @@ const error404 = function (err) {
 };
 
 const activateUser = async function (res) {
-  await User.findOneAndUpdate({ email: email }, (active = true));
+  await User.findOneAndUpdate(
+    { email: email },
+    { active: true, disengaged: false }
+  );
   res.send('Usuario registrado correctamente');
+};
+
+const deactivateUser = async function (res) {
+  const user = await User.findOne({ email: email });
+  if (!user.client) {
+    await User.findOneAndUpdate(
+      { email: email },
+      { active: false, disengaged: false }
+    );
+    res.send('Usuario registrado correctamente');
+  } else res.send('Usuario es cliente');
+};
+
+const disengageUser = async function (res) {
+  await User.findOneAndUpdate({ email: email }, { disengaged: true });
+  res.send('Usuario desanclado');
+};
+
+const transformClient = async function (res) {
+  await User.findOneAndUpdate({ email: email }, { client: true });
+  res.send('Usuario compro programa correctamente');
 };
 
 const createAdminUser = async function (password, res) {
