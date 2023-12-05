@@ -4,5 +4,11 @@ const {
   getUsers,
   createUser,
   deleteUser,
-  login,
-} = require('../controllers/users');
+} = require('../controllers/usersController');
+
+usersRoute.get('/', getUsers);
+usersRoute.get('/current', getCurrentUser);
+// usersRoute.put('/:id', activateUser)
+usersRoute.delete('/:id', deleteUser);
+
+module.exports = { usersRoute };

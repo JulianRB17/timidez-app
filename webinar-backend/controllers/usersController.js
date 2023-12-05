@@ -24,7 +24,7 @@ const error404 = function (err) {
   err.message = 'No se ha encontrado ningún usuario con ese ID';
 };
 
-const activateUser = async function (res) {
+const activateUser = async function (email, res) {
   await User.findOneAndUpdate(
     { email: email },
     { active: true, disengaged: false }
@@ -96,9 +96,10 @@ const getCurrentUser = async function (req, res, next) {
 const createUser = async function (req, res, next) {
   try {
     const { username, password, email } = req.body;
-    const currentUser = await User.find({ email: email });
 
-    if (currentUser) activateUser(res);
+    const currentUser = await User.findOne({ email: email });
+
+    if (currentUser) activateUser(email, res);
 
     if (password) createAdminUser(password, res);
     else registerUser(username, email, res);
