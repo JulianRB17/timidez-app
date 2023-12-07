@@ -3,156 +3,142 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+const catchAsync = require('./../utils/catchAsync');
+const AppError = require('../utils/appError');
+
 let JWT_SECRET;
 
 if (process.env.NODE_ENV !== 'production') {
   JWT_SECRET = process.env.JWT_SECRET;
 }
 
-const error400 = function (err) {
-  err.message = 'Se pasaron datos inválidos';
-  err.status = 400;
-};
+const error500 = 'Algo salió mal en el servidor';
+const error404 = 'No se encontró usuario con ese email';
+const error401 = 'No autorizado';
+const error400 = 'Se pasaron datos inválidos';
 
-const error401 = function (err, message = 'No autorizado') {
-  err.message = message;
-  err.status = 401;
-};
-
-const error404 = function (err) {
-  err.status = 404;
-  err.message = 'No se ha encontrado ningún usuario con ese ID';
-};
-
-const activateUser = async function (email, res) {
-  await User.findOneAndUpdate(
-    { email: email },
-    { active: true, disengaged: false }
-  );
-  res.send('Usuario registrado correctamente');
-};
-
-const deactivateUser = async function (res) {
-  const user = await User.findOne({ email: email });
-  if (!user.client) {
-    await User.findOneAndUpdate(
-      { email: email },
-      { active: false, disengaged: false }
-    );
-    res.send('Usuario registrado correctamente');
-  } else res.send('Usuario es cliente');
-};
-
-const disengageUser = async function (res) {
-  await User.findOneAndUpdate({ email: email }, { disengaged: true });
-  res.send('Usuario desanclado');
-};
-
-const transformClient = async function (res) {
-  await User.findOneAndUpdate({ email: email }, { client: true });
-  res.send('Usuario compro programa correctamente');
-};
-
-const createAdminUser = async function (password, res) {
+const createAdminUser = catchAsync(async function (password, res, next) {
   const hash = await bcrypt.hash(password, 10);
   const newUser = await User.create({
     username,
     email,
     password: hash,
   });
+  if (!newUser) return next(new AppError(error500, 500));
   const token = jwt.sign({ _id: newUser._id }, JWT_SECRET, {
     expiresIn: '7d',
   });
   res.send({ token });
+});
+
+const activateUser = catchAsync(async function (req, res, next) {
+  await findUser(req, res, next);
+  const updatedUser = await updateUser(
+    { email: req.body.email },
+    { active: true, disengaged: false }
+  );
+
+  res.send(updatedUser);
+});
+
+//handlers
+
+const findUser = async function (req, res, next) {
+  const user = await User.findOne({ email: req.body.email });
+  if (!user) return next(new AppError(error404, 404));
+  return user;
 };
 
-const registerUser = async function (username, email, res) {
-  await User.create({
+const updateUser = async function (findObject, updateObject, next) {
+  const updatedUser = await User.findOneAndUpdate(findObject, updateObject);
+  if (!updatedUser) return next(new AppError(error500, 500));
+  return updatedUser;
+};
+
+const deactivateUser = catchAsync(async function (req, res, next) {
+  const user = await findUser(req, res, next);
+  if (!user.client) {
+    const updatedUser = await updateUser(
+      { email: email },
+      { active: false, disengaged: false }
+    );
+    res.send(updatedUser);
+  } else res.send(user);
+});
+
+const disengageUser = catchAsync(async function (req, res, next) {
+  await findUser(req, res, next);
+  const updatedUser = await updateUser(
+    { email: req.body.email },
+    { disengaged: true }
+  );
+
+  res.send(updatedUser);
+});
+
+const transformClient = async function (req, res, next) {
+  await findUser(req, res, next);
+  const updatedUser = await User.findOneAndUpdate(
+    { email: email },
+    { client: true }
+  );
+  res.send(updatedUser);
+};
+
+const registerUser = catchAsync(async function (username, email, res) {
+  const user = await User.create({
     username,
     email,
   });
-  res.send('Usuario registrado correctamente');
-};
+  if (!user) return next(new AppError(error500, 500));
+  res.send(user);
+});
 
-const getUsers = async function (req, res, next) {
-  try {
-    const users = await User.find({});
-    res.send({ users });
-  } catch (err) {
-    next(err);
-  }
-};
+const getUsers = catchAsync(async function (req, res, next) {
+  const users = await User.find({});
+  res.send({ users });
+});
 
-const getCurrentUser = async function (req, res, next) {
-  try {
-    const userId = req.user._id;
-    const currentUser = await User.findById(userId);
-    res.send({ currentUser });
-  } catch (err) {
-    next(err);
-  }
-};
+const getCurrentUser = catchAsync(async function (req, res, next) {
+  const userId = req.user._id;
+  const currentUser = await User.findById(userId);
+  if (!currentUser)
+    return next(new AppError('No se encontró usuario con esa id', 404));
+  res.send({ currentUser });
+});
 
-const createUser = async function (req, res, next) {
-  try {
-    const { username, password, email } = req.body;
+const createUser = catchAsync(async function (req, res, next) {
+  const { username, password, email } = req.body;
 
-    const currentUser = await User.findOne({ email: email });
+  const currentUser = await User.findOne({ email: email });
 
-    if (currentUser) activateUser(email, res);
+  if (currentUser) activateUser(req, res, next);
 
-    if (password) createAdminUser(password, res);
-    else registerUser(username, email, res);
+  if (password) createAdminUser(password, res, next);
+  else registerUser(username, email, res);
 
-    // Crear función de crear usuario y mandar mail que se repetirá en los tres casos
-  } catch (err) {
-    if (err.code === 401) {
-      error401(err, 'Ya existe un usuario con este email');
-    }
-    if (err.name === 'ValidationError') {
-      error400(err);
-    }
-    next(err);
-  }
-};
+  // Crear función de crear usuario y mandar mail que se repetirá en los tres casos
+});
 
-const login = async function (req, res, next) {
+const login = catchAsync(async function (req, res, next) {
   const { email, password } = req.body;
-  const errMessage = 'Email o contraseña incorrectos';
-  try {
-    const user = await User.findOne({ email }).select('+password');
-    if (!user) throw new Error('Email o contraseña incorrectos');
-    const matched = await bcrypt.compare(password, user.password);
-    if (!matched) throw new Error('Email o contraseña incorrectos');
-    const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
-      expiresIn: '7d',
-    });
-    res.send({ token });
-  } catch (err) {
-    if (err.message === errMessage) {
-      error401(err);
-    }
-    next(err);
-  }
-};
 
-const deleteUser = async function (req, res, next) {
-  try {
-    const deletedUser = await User.findOneAndDelete({ _id: req.params.id });
-    res.send({ deletedUser });
-  } catch (err) {
-    if (err.name === 'CastError') {
-      error404(err);
-    }
-    if (err.message === 'Proyect not found') {
-      error404(err);
-    }
-    if (err.message === 'Invalid user') {
-      error401(err);
-    }
-    next(err);
-  }
-};
+  const user = await User.findOne({ email }).select('+password');
+  if (!user) return new AppError(error400, 400);
+  const matched = await bcrypt.compare(password, user.password);
+  if (!matched) return new AppError(error400, 400);
+  const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
+    expiresIn: '7d',
+  });
+  res.send({ token });
+});
+
+const deleteUser = catchAsync(async function (req, res, next) {
+  await findUser(req, res, next);
+  const deletedUser = await User.findOneAndDelete({ _id: req.params.id });
+  if (!deletedUser) return next(new AppError(error404, 404));
+  res.send({ deletedUser });
+});
 
 module.exports = {
   getCurrentUser,

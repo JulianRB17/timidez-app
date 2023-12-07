@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const catchAsync = require('./../utils/catchAsync');
 
 let JWT_SECRET;
 
@@ -8,7 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
   JWT_SECRET = 'secreto';
 }
 
-module.exports = async (req, res, next) => {
+module.exports = catchAsync(async (req, res, next) => {
   const { authorization } = req.headers;
   const error = function () {
     res.status(403).send({ message: 'Se requiere autorización' });
@@ -20,12 +21,9 @@ module.exports = async (req, res, next) => {
 
   let payload;
 
-  try {
-    payload = jwt.verify(token, JWT_SECRET);
-  } catch (err) {
-    return error();
-  }
+  // ¿Este no es un await?
+  payload = jwt.verify(token, JWT_SECRET);
 
   req.user = payload;
   next();
-};
+});
