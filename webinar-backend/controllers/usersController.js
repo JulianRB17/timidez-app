@@ -28,18 +28,8 @@ const createAdminUser = catchAsync(async function (password, res, next) {
   const token = jwt.sign({ _id: newUser._id }, JWT_SECRET, {
     expiresIn: '7d',
   });
-  res.send({ token });
+  res.json({ token });
 });
-
-const activateUser = catchAsync(async function (req, res, next) {
-  const updatedUser = await updateUser(
-    { email: req.body.email },
-    { active: true, disengaged: false }
-  );
-  res.send(updatedUser);
-});
-
-//handlers
 
 const findUser = async function (req, res, next) {
   const user = await User.findOne({ email: req.body.email });
@@ -48,10 +38,25 @@ const findUser = async function (req, res, next) {
 };
 
 const updateUser = async function (findObject, updateObject, next) {
-  const updatedUser = await User.findOneAndUpdate(findObject, updateObject);
+  // const beforeUser = await User.findOne(findObject);
+
+  const updatedUser = await User.findOneAndUpdate(findObject, updateObject, {
+    new: true,
+  });
   if (!updatedUser) return next(new AppError(error500, 500));
   return updatedUser;
 };
+
+const activateUser = catchAsync(async function (req, res, next) {
+  const updatedUser = await updateUser(
+    { email: req.body.email },
+    { active: true, disengaged: false },
+    next
+  );
+  res.json({ user: updatedUser });
+});
+
+//handlers
 
 const deactivateUser = catchAsync(async function (req, res, next) {
   const user = await findUser(req, res, next);
@@ -60,8 +65,8 @@ const deactivateUser = catchAsync(async function (req, res, next) {
       { email: email },
       { active: false, disengaged: false }
     );
-    res.send(updatedUser);
-  } else res.send(user);
+    res.json({ user: updatedUser });
+  } else res.json({ user: user });
 });
 
 const disengageUser = catchAsync(async function (req, res, next) {
@@ -71,7 +76,7 @@ const disengageUser = catchAsync(async function (req, res, next) {
     { disengaged: true }
   );
 
-  res.send(updatedUser);
+  res.json({ user: updatedUser });
 });
 
 const transformClient = async function (req, res, next) {
@@ -80,7 +85,7 @@ const transformClient = async function (req, res, next) {
     { email: email },
     { client: true }
   );
-  res.send(updatedUser);
+  res.json({ user: updatedUser });
 };
 
 const registerUser = catchAsync(async function (username, email, res) {
@@ -89,12 +94,12 @@ const registerUser = catchAsync(async function (username, email, res) {
     email,
   });
   if (!user) return next(new AppError(error500, 500));
-  res.send(user);
+  res.json({ user: user });
 });
 
 const getUsers = catchAsync(async function (req, res, next) {
   const users = await User.find({});
-  res.send({ users });
+  res.json({ users: users });
 });
 
 const getCurrentUser = catchAsync(async function (req, res, next) {
@@ -102,7 +107,7 @@ const getCurrentUser = catchAsync(async function (req, res, next) {
   const currentUser = await User.findById(userId);
   if (!currentUser)
     return next(new AppError('No se encontró usuario con esa id', 404));
-  res.send({ currentUser });
+  res.json({ user: currentUser });
 });
 
 const createUser = catchAsync(async function (req, res, next) {
@@ -110,9 +115,9 @@ const createUser = catchAsync(async function (req, res, next) {
 
   const currentUser = await User.findOne({ email: email });
 
-  if (currentUser) activateUser(req, res, next);
+  if (currentUser) return activateUser(req, res, next);
 
-  if (password) createAdminUser(password, res, next);
+  if (password) return createAdminUser(password, res, next);
   else registerUser(username, email, res);
 
   // Crear función de crear usuario y mandar mail que se repetirá en los tres casos
@@ -128,14 +133,14 @@ const login = catchAsync(async function (req, res, next) {
   const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
     expiresIn: '7d',
   });
-  res.send({ token });
+  res.json({ token });
 });
 
 const deleteUser = catchAsync(async function (req, res, next) {
   await findUser(req, res, next);
   const deletedUser = await User.findOneAndDelete({ _id: req.params.id });
   if (!deletedUser) return next(new AppError(error404, 404));
-  res.send({ deletedUser });
+  res.json({ user: deletedUser });
 });
 
 module.exports = {
@@ -144,4 +149,5 @@ module.exports = {
   createUser,
   deleteUser,
   login,
+  activateUser,
 };

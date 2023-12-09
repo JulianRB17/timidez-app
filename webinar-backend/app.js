@@ -11,6 +11,13 @@ const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 require('dotenv').config();
 
+process.on('uncaughtException', (err) => {
+  // MANDARME MAIL AQUÍ AUTOMATIZAR EL RESETEO DEL SERVER
+  console.log('UNCAUGHT EXCPETION... app cerrándose');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
+
 const { PORT = 3001, NODE_ENV } = process.env;
 const app = express();
 
@@ -58,7 +65,7 @@ app.post('/api/ingresar', celebrateLoginMiddleware(), login);
 app.use('/api/users', usersRoute);
 
 app.use(errorLogger);
-app.use(errors());
+// app.use(errors());
 
 app.all('*', (req, res, next) => {
   next(new AppError(`No se encuentra ${req.originalUrl} en el servidor`, 404));
@@ -66,6 +73,15 @@ app.all('*', (req, res, next) => {
 
 app.use(globalErrorHandler);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(NODE_ENV, PORT);
+});
+
+process.on('unhandledRejection', (err) => {
+  // MANDARME MAIL AQUÍ AUTOMATIZAR EL RESETEO DEL SERVER
+  console.log('UNHANDLED REJECTION... app cerrándose');
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
 });
