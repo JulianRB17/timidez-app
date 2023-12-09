@@ -9,8 +9,9 @@ const { usersRoute } = require('./routes/users');
 const { login, createUser } = require('./controllers/usersController');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+require('dotenv').config();
 
-const { PORT = 3001, API_KEY } = process.env;
+const { PORT = 3001, NODE_ENV } = process.env;
 const app = express();
 
 mongoose.connect('mongodb://127.0.0.1:27017/timidez');
@@ -66,5 +67,5 @@ app.all('*', (req, res, next) => {
 app.use(globalErrorHandler);
 
 app.listen(PORT, () => {
-  console.log(PORT);
+  console.log(NODE_ENV, PORT);
 });

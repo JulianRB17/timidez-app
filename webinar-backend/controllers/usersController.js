@@ -32,12 +32,10 @@ const createAdminUser = catchAsync(async function (password, res, next) {
 });
 
 const activateUser = catchAsync(async function (req, res, next) {
-  await findUser(req, res, next);
   const updatedUser = await updateUser(
     { email: req.body.email },
     { active: true, disengaged: false }
   );
-
   res.send(updatedUser);
 });
 
