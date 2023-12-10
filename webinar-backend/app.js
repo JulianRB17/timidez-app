@@ -1,12 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const validator = require('validator');
-const { celebrate, Joi, Segments, errors } = require('celebrate');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const { usersRoute } = require('./routes/users');
-const { login, createUser } = require('./controllers/usersController');
+const { apiRoute } = require('./routes/api');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 require('dotenv').config();
@@ -23,31 +21,6 @@ const app = express();
 
 mongoose.connect('mongodb://127.0.0.1:27017/timidez');
 
-const emailValidator = function (value, helpers) {
-  if (validator.isEmail(value)) {
-    return value;
-  }
-  return helpers.error('string.uri');
-};
-
-const celebrateCreateUserMiddleware = function () {
-  return celebrate({
-    [Segments.BODY]: Joi.object().keys({
-      email: Joi.string().required().custom(emailValidator),
-      username: Joi.string().required(),
-    }),
-  });
-};
-
-const celebrateLoginMiddleware = function () {
-  return celebrate({
-    [Segments.BODY]: Joi.object().keys({
-      email: Joi.string().required().custom(emailValidator),
-      password: Joi.string().required(),
-    }),
-  });
-};
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
@@ -58,9 +31,7 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.post('/api/users', celebrateCreateUserMiddleware(), createUser);
-app.post('/api/ingresar', celebrateLoginMiddleware(), login);
-
+app.use('/api', apiRoute);
 // app.use(auth);
 app.use('/api/users', usersRoute);
 

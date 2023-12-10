@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  disengaged: {
+  engaged: {
     type: Boolean,
     default: false,
   },
@@ -42,6 +42,10 @@ const userSchema = new mongoose.Schema({
     type: Date,
     required: true,
     default: Date.now(),
+  },
+  admin: {
+    type: Boolean,
+    default: false,
   },
 });
 
