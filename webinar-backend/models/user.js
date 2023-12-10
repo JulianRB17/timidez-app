@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
   },
   engaged: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   date: {
     type: Date,
@@ -49,4 +49,11 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+userSchema.pre('save', function (next) {
+  const prueba = () => {
+    console.log(this);
+  };
+  setTimeout(prueba, 5000);
+  next();
+});
 module.exports = mongoose.model('User', userSchema);
