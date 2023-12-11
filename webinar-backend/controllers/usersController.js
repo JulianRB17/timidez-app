@@ -68,21 +68,31 @@ const activateUser = catchAsync(async function (req, res, next) {
   res.json({ user: updatedUser });
 });
 
-const engageUser = catchAsync(async function (req, res, next) {
+const reengageUser = catchAsync(async function (req, res, next) {
   const updatedUser = await updateUser(
     { _id: req.params.id },
-    { engaged: true }
+    { reengaged: true },
+    next
   );
+  // .save();
   res.json({ user: updatedUser });
 });
 
-const disengageUser = catchAsync(async function (req, res, next) {
-  const updatedUser = await updateUser(
-    { _id: req.params.id },
-    { engaged: false }
-  );
-  res.json({ user: updatedUser });
-});
+// const engageUser = catchAsync(async function (req, res, next) {
+//   const updatedUser = await updateUser(
+//     { _id: req.params.id },
+//     { engaged: true }
+//   );
+//   res.json({ user: updatedUser });
+// });
+
+// const disengageUser = catchAsync(async function (req, res, next) {
+//   const updatedUser = await updateUser(
+//     { _id: req.params.id },
+//     { engaged: false }
+//   );
+//   res.json({ user: updatedUser });
+// });
 
 const transformClient = async function (req, res, next) {
   const updatedUser = await updateUser(
@@ -148,7 +158,6 @@ module.exports = {
   deactivateUser,
   activateUser,
   createAdminUser,
-  engageUser,
-  disengageUser,
+  reengageUser,
   transformClient,
 };

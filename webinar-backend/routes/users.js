@@ -6,8 +6,6 @@ const {
   activateUser,
   createAdminUser,
   deactivateUser,
-  engageUser,
-  disengageUser,
   transformClient,
 } = require('../controllers/usersController');
 
@@ -15,8 +13,8 @@ usersRoute.get('/all', getUsers);
 usersRoute.post('/admin', createAdminUser);
 usersRoute.patch('/activate/:id', activateUser);
 usersRoute.patch('/deactivate/:id', deactivateUser);
-usersRoute.patch('/engage/:id', engageUser);
-usersRoute.patch('/disengage/:id', disengageUser);
+// usersRoute.patch('/engage/:id', engageUser);
+// usersRoute.patch('/disengage/:id', disengageUser);
 usersRoute.patch('/client/:id', transformClient);
 usersRoute.delete('/:id', deleteUser);
 

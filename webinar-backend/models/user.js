@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const {
+  disengageTimerUser,
+  disengageTimerNewUser,
+} = require('../utils/timers');
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -38,6 +42,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  reengaged: {
+    type: Boolean,
+    default: false,
+  },
   date: {
     type: Date,
     required: true,
@@ -50,10 +58,11 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre('save', function (next) {
-  const prueba = () => {
-    console.log(this);
-  };
-  setTimeout(prueba, 5000);
+  if (!this.client) {
+    if (this.new) disengageTimerNewUser(this);
+    if (this.reengaged) disengageTimerUser(this);
+  }
   next();
 });
+
 module.exports = mongoose.model('User', userSchema);
