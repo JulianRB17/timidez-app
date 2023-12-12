@@ -1,37 +1,38 @@
-const deactivateUser = (schema) => {
-  schema.active = false;
-  schema.save();
+const { sendMail } = require('../controllers/emailController');
+
+const deactivateUser = (user) => {
+  user.active = false;
+  user.save();
 };
 
-const deactivateTimerUser = (schema) => {
-  if (schema) {
-    setTimeout((schema) => deactivateUser(schema), 3000, schema);
+const deactivateTimerUser = (user) => {
+  if (user) {
+    setTimeout((user) => deactivateUser(user), 3000, user);
   }
 };
 
-const disengageNewUser = (schema) => {
-  schema.new = false;
-  schema.engaged = false;
-  schema.save();
-  deactivateTimerUser(schema);
+const disengageNewUser = (user) => {
+  user.new = false;
+  user.engaged = false;
+  user.save();
+  deactivateTimerUser(user);
 };
 
-const disengageTimerNewUser = (schema) => {
-  if (schema) {
-    setTimeout((schema) => disengageNewUser(schema), 3000, schema);
+const disengageTimerNewUser = (user) => {
+  if (user) {
+    setTimeout((user) => disengageNewUser(user), 3000, user);
   }
 };
 
-const disengageUser = (schema) => {
-  schema.reengaged = false;
-  schema.save();
-  console.log('usuario viejo desanclado');
-  deactivateTimerUser(schema);
+const disengageUser = (user) => {
+  user.reengaged = false;
+  user.save();
+  deactivateTimerUser(user);
 };
 
-const disengageTimerUser = (schema) => {
-  if (schema) {
-    setTimeout((schema) => disengageUser(schema), 3000, schema);
+const disengageTimerUser = (user) => {
+  if (user) {
+    setTimeout((user) => disengageUser(user), 3000, user);
   }
 };
 

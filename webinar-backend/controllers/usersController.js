@@ -18,8 +18,6 @@ const error401 = 'No autorizado';
 const error400 = 'Se pasaron datos inválidos';
 
 const updateUser = async function (findObject, updateObject, next) {
-  // const beforeUser = await User.findOne(findObject);
-
   const updatedUser = await User.findOneAndUpdate(findObject, updateObject, {
     new: true,
   });
@@ -47,16 +45,12 @@ const getCurrentUser = catchAsync(async function (req, res, next) {
   res.json({ user: currentUser });
 });
 
-//No entiendo el !user.client, siento que es algo que se debería revisar en el frontend
 const deactivateUser = catchAsync(async function (req, res, next) {
-  // const user = await findUser(req, res, next);
-  // if (!user.client) {
   const updatedUser = await updateUser(
     { _id: req.params.id },
     { active: false, disengaged: false }
   );
   res.json({ user: updatedUser });
-  // } else res.json({ user: user });
 });
 
 const activateUser = catchAsync(async function (req, res, next) {
@@ -69,30 +63,14 @@ const activateUser = catchAsync(async function (req, res, next) {
 });
 
 const reengageUser = catchAsync(async function (req, res, next) {
-  const updatedUser = await updateUser(
-    { _id: req.params.id },
-    { reengaged: true },
-    next
-  );
-  // .save();
-  res.json({ user: updatedUser });
+  const user = await User.findOne({ _id: req.params.id });
+  if (!user)
+    return next(new AppError('No se encontró usuario con este ID', 404));
+  user.reengaged = true;
+  user.active = true;
+  user.save();
+  res.json({ user: user });
 });
-
-// const engageUser = catchAsync(async function (req, res, next) {
-//   const updatedUser = await updateUser(
-//     { _id: req.params.id },
-//     { engaged: true }
-//   );
-//   res.json({ user: updatedUser });
-// });
-
-// const disengageUser = catchAsync(async function (req, res, next) {
-//   const updatedUser = await updateUser(
-//     { _id: req.params.id },
-//     { engaged: false }
-//   );
-//   res.json({ user: updatedUser });
-// });
 
 const transformClient = async function (req, res, next) {
   const updatedUser = await updateUser(
@@ -110,8 +88,6 @@ const createUser = catchAsync(async function (req, res, next) {
   });
   if (!user) return next(new AppError(error500, 500));
   res.json({ user: user });
-
-  // Crear función de crear usuario y mandar mail que se repetirá en los tres casos
 });
 
 const login = catchAsync(async function (req, res, next) {
