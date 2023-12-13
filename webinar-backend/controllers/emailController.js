@@ -1,31 +1,30 @@
 const nodemailer = require('nodemailer');
-require('dotenv').config();
 
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('../utils/appError');
+require('dotenv').config();
+
+const { EMAIL_USERNAME, EMAIL_PASSWORD, EMAIL_HOST, EMAIL_PORT } = process.env;
 
 const transporter = nodemailer.createTransport({
-  host: 'vemos',
-  port: 465,
-  secure: true,
+  host: EMAIL_HOST,
+  port: EMAIL_PORT,
   auth: {
-    user: 'MIO',
-    pass: 'contraseña',
+    user: EMAIL_USERNAME,
+    pass: EMAIL_PASSWORD,
   },
 });
 
-const sendMail = async function (userEmail, subject, htmlBody) {
-  //     const info = await transporter.sendMail({
-  //       from: '<mimail@gmail.com>',
-  //       to: userEmail,
-  //   bcc: '<mimail@gmail.com>',
-  //       subject: subject,
-  //       html: htmlBody,
-  //     });
-
-  console.log(userEmail, subject, htmlBody);
+const sendEmail = async function (userEmail, subject, htmlBody) {
+  await transporter.sendMail({
+    from: `El julis <eljulis@timidez.com>`,
+    to: userEmail,
+    bcc: EMAIL_USERNAME,
+    subject: subject,
+    html: htmlBody,
+  });
 };
 
-main().catch(new AppError('Algo salió mal', 500));
+// sendMail().catch(new AppError('Algo salió mal', 500));
 
-module.exports = { sendMail };
+module.exports = { sendEmail };

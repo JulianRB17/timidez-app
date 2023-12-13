@@ -32,7 +32,7 @@ app.get('/crash-test', () => {
 });
 
 app.use('/api', apiRoute);
-// app.use(auth);
+app.use(auth);
 app.use('/api/users', usersRoute);
 
 app.use(errorLogger);

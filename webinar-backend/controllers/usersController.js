@@ -92,11 +92,13 @@ const createUser = catchAsync(async function (req, res, next) {
 
 const login = catchAsync(async function (req, res, next) {
   const { email, password } = req.body;
-
+  if (!email || !password)
+    return next(new AppError('Por favor envía un email y una contraseña', 400));
   const user = await User.findOne({ email }).select('+password');
-  if (!user) return new AppError(error400, 400);
+  if (!user) return next(new AppError('Email o contraseña incorrectos', 401));
   const matched = await bcrypt.compare(password, user.password);
-  if (!matched) return new AppError(error400, 400);
+  if (!matched)
+    return next(new AppError('Email o contraseña incorrectos', 401));
   const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
     expiresIn: '7d',
   });

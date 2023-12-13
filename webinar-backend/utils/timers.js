@@ -1,8 +1,16 @@
-const { sendMail } = require('../controllers/emailController');
+const { sendEmail } = require('../controllers/emailController');
+const AppError = require('./appError');
 
 const deactivateUser = (user) => {
+  const userEmail = user.email;
+  const subject = `Hola, ${user.username}, tu cuenta ha sido desactivada`;
+  const htmlBody = '<p>Usuario desactivado, una lástima</p>';
+
   user.active = false;
   user.save();
+  sendEmail(userEmail, subject, htmlBody).catch(
+    () => new AppError('Mail no enviado', 500)
+  );
 };
 
 const deactivateTimerUser = (user) => {
