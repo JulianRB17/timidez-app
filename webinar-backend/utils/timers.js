@@ -1,46 +1,44 @@
 const { sendEmail } = require('../controllers/emailController');
 const AppError = require('./appError');
 
-const deactivateUser = (user) => {
+const deactivateUser = async (user, next) => {
   const userEmail = user.email;
   const subject = `Hola, ${user.username}, tu cuenta ha sido desactivada`;
   const htmlBody = '<p>Usuario desactivado, una lástima</p>';
 
   user.active = false;
-  user.save();
-  sendEmail(userEmail, subject, htmlBody).catch(
-    () => new AppError('Mail no enviado', 500)
-  );
+  await user.save();
+  sendEmail(userEmail, subject, htmlBody, next);
 };
 
-const deactivateTimerUser = (user) => {
+const deactivateTimerUser = (user, next) => {
   if (user) {
-    setTimeout((user) => deactivateUser(user), 3000, user);
+    setTimeout(() => deactivateUser(user, next), 3000, user, next);
   }
 };
 
-const disengageNewUser = (user) => {
+const disengageNewUser = async (user, next) => {
   user.new = false;
   user.engaged = false;
-  user.save();
-  deactivateTimerUser(user);
+  await user.save();
+  deactivateTimerUser(user, next);
 };
 
-const disengageTimerNewUser = (user) => {
+const disengageTimerNewUser = (user, next) => {
   if (user) {
-    setTimeout((user) => disengageNewUser(user), 3000, user);
+    setTimeout(() => disengageNewUser(user, next), 3000, user, next);
   }
 };
 
-const disengageUser = (user) => {
+const disengageUser = async (user, next) => {
   user.reengaged = false;
-  user.save();
-  deactivateTimerUser(user);
+  await user.save();
+  deactivateTimerUser(user, next);
 };
 
-const disengageTimerUser = (user) => {
+const disengageTimerUser = (user, next) => {
   if (user) {
-    setTimeout((user) => disengageUser(user), 3000, user);
+    setTimeout(() => disengageUser(user, next), 3000, user, next);
   }
 };
 

@@ -4,6 +4,7 @@ const {
   disengageTimerUser,
   disengageTimerNewUser,
 } = require('../utils/timers');
+const catchAsync = require('../utils/catchAsync');
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -59,8 +60,8 @@ const userSchema = new mongoose.Schema({
 
 userSchema.pre('save', function (next) {
   if (!this.client) {
-    if (this.new) disengageTimerNewUser(this);
-    if (this.reengaged) disengageTimerUser(this);
+    if (this.new) disengageTimerNewUser(this, next);
+    if (this.reengaged) disengageTimerUser(this, next);
   }
   next();
 });

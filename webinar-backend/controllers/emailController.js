@@ -15,16 +15,23 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendEmail = async function (userEmail, subject, htmlBody) {
-  await transporter.sendMail({
-    from: `El julis <eljulis@timidez.com>`,
-    to: userEmail,
-    bcc: EMAIL_USERNAME,
-    subject: subject,
-    html: htmlBody,
-  });
+const sendEmail = async function (userEmail, subject, htmlBody, next) {
+  try {
+    const mail = await transporter.sendMail({
+      from: `"El julis" <eljulis@timidez.com>`,
+      to: userEmail,
+      bcc: EMAIL_USERNAME,
+      subject: subject,
+      html: htmlBody,
+    });
+    // if (mail.rejected.length >= 1) {
+    //   return next(new AppError(`Mail no enviado`, 500));
+    // }
+  } catch (err) {
+    return next(
+      new AppError('Mail no enviado. Intenta después otra vez.', 500)
+    );
+  }
 };
-
-// sendMail().catch(new AppError('Algo salió mal', 500));
 
 module.exports = { sendEmail };
