@@ -5,7 +5,7 @@ const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const { usersRoute } = require('./routes/users');
 const { apiRoute } = require('./routes/api');
-const auth = require('./middlewares/auth');
+const { auth } = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 require('dotenv').config();
 

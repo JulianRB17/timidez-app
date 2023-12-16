@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('../utils/appError');
+const { createSendToken } = require('../middlewares/auth');
 
 let JWT_SECRET;
 
@@ -99,10 +100,7 @@ const login = catchAsync(async function (req, res, next) {
   const matched = await bcrypt.compare(password, user.password);
   if (!matched)
     return next(new AppError('Email o contraseña incorrectos', 401));
-  const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
-    expiresIn: '7d',
-  });
-  res.json({ token });
+  createSendToken(user, res);
 });
 
 const deleteUser = catchAsync(async function (req, res, next) {
@@ -113,17 +111,14 @@ const deleteUser = catchAsync(async function (req, res, next) {
 const createAdminUser = catchAsync(async function (req, res, next) {
   const { username, email, password } = req.body;
   const hash = await bcrypt.hash(password, 12);
-  const newUser = await User.create({
+  const user = await User.create({
     username,
     email,
     password: hash,
     admin: true,
   });
-  if (!newUser) return next(new AppError(error500, 500));
-  const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET, {
-    expiresIn: '7d',
-  });
-  res.json({ token });
+  if (!user) return next(new AppError(error500, 500));
+  createSendToken(user, res);
 });
 
 module.exports = {

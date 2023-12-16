@@ -5,7 +5,7 @@ const User = require('../models/user');
 
 const { JWT_SECRET } = process.env;
 
-module.exports = catchAsync(async (req, res, next) => {
+module.exports.auth = catchAsync(async (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith('Bearer'))
@@ -24,3 +24,19 @@ module.exports = catchAsync(async (req, res, next) => {
   req.user = payload;
   next();
 });
+
+module.exports.createSendToken = (user, res) => {
+  const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
+    expiresIn: '7d',
+  });
+  const cookieOptions = {
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+    httpOnly: true,
+  };
+
+  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+
+  res.cookie('jwt', token, cookieOptions);
+
+  res.json({ token });
+};
