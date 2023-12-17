@@ -1,5 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+// revisar último video de seguridad si decido usar parámetros
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -7,6 +11,7 @@ const { usersRoute } = require('./routes/users');
 const { apiRoute } = require('./routes/api');
 const { auth } = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const limiter = require('./middlewares/rateLimit');
 require('dotenv').config();
 
 process.on('uncaughtException', (err) => {
@@ -20,10 +25,14 @@ const { PORT = 3001, NODE_ENV } = process.env;
 const app = express();
 
 mongoose.connect('mongodb://127.0.0.1:27017/timidez');
+app.use(helmet());
 
-app.use(express.json());
+app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
+
+app.use(mongoSanitize());
+app.use(xss());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -31,6 +40,7 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
+app.use(limiter);
 app.use('/api', apiRoute);
 app.use(auth);
 app.use('/api/users', usersRoute);
