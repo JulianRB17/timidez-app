@@ -66,3 +66,13 @@ process.on('unhandledRejection', (err) => {
     process.exit(1);
   });
 });
+
+// EMAILS:
+// Terminar clase de mail y métodos de ésta
+// Darme de alta en sendgrid u otro servidor de mails pros
+// Automatizar envío de emails
+// Crear método para mandar de forma manual emails a usuarios activos
+// Tracking de emails
+
+// Vinculación con frontend
+// Elementos para despliegue
