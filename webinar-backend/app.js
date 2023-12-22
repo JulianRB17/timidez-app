@@ -12,6 +12,7 @@ const { apiRoute } = require('./routes/api');
 const { auth } = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const limiter = require('./middlewares/rateLimit');
+const { emailRoute } = require('./routes/email');
 require('dotenv').config();
 
 process.on('uncaughtException', (err) => {
@@ -32,7 +33,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
 
 app.use(mongoSanitize());
-app.use(xss());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -41,9 +41,10 @@ app.get('/crash-test', () => {
 });
 
 app.use(limiter);
-app.use('/api', apiRoute);
+app.use('/api', xss(), apiRoute);
 app.use(auth);
 app.use('/api/users', usersRoute);
+app.use('/api/email', emailRoute);
 
 app.use(errorLogger);
 // app.use(errors());
@@ -68,10 +69,9 @@ process.on('unhandledRejection', (err) => {
 });
 
 // EMAILS:
-// Terminar clase de mail y métodos de ésta
+
+// Escribir mails
 // Darme de alta en sendgrid u otro servidor de mails pros
-// Automatizar envío de emails
-// Crear método para mandar de forma manual emails a usuarios activos
 // Tracking de emails
 
 // Vinculación con frontend

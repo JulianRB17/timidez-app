@@ -14,6 +14,6 @@ const {
 apiRoute.get('/user', getUser);
 apiRoute.post('/users', celebrateCreateUserMiddleware(), createUser);
 apiRoute.post('/login', celebrateLoginMiddleware(), login);
-apiRoute.patch('/:id', reengageUser);
+apiRoute.patch('/user/:id', reengageUser);
 
 module.exports = { apiRoute };

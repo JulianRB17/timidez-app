@@ -1,6 +1,5 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const catchAsync = require('./../utils/catchAsync');
@@ -46,23 +45,6 @@ const getCurrentUser = catchAsync(async function (req, res, next) {
   res.json({ user: currentUser });
 });
 
-const deactivateUser = catchAsync(async function (req, res, next) {
-  const updatedUser = await updateUser(
-    { _id: req.params.id },
-    { active: false, disengaged: false }
-  );
-  res.json({ user: updatedUser });
-});
-
-const activateUser = catchAsync(async function (req, res, next) {
-  const updatedUser = await updateUser(
-    { _id: req.params.id },
-    { active: true, engaged: false },
-    next
-  );
-  res.json({ user: updatedUser });
-});
-
 const reengageUser = catchAsync(async function (req, res, next) {
   const user = await User.findOne({ _id: req.params.id });
   if (!user)
@@ -88,6 +70,7 @@ const createUser = catchAsync(async function (req, res, next) {
     email,
   });
   if (!user) return next(new AppError(error500, 500));
+
   res.json({ user: user });
 });
 
@@ -128,8 +111,6 @@ module.exports = {
   createUser,
   deleteUser,
   login,
-  deactivateUser,
-  activateUser,
   createAdminUser,
   reengageUser,
   transformClient,

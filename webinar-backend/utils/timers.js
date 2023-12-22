@@ -1,45 +1,75 @@
-const { sendEmail } = require('../controllers/emailController');
 const AppError = require('./appError');
 
-const deactivateUser = async (user, next) => {
+const catchAsync = require('./catchAsync');
+const { sendEmail } = require('./sendMail');
+
+const deactivateUser = catchAsync(async (user, next) => {
   const userEmail = user.email;
   const subject = `Hola, ${user.username}, tu cuenta ha sido desactivada`;
   const htmlBody = '<p>Usuario desactivado, una lástima</p>';
 
   user.active = false;
   await user.save();
-  sendEmail(userEmail, subject, htmlBody, next);
-};
+  await sendEmail(userEmail, subject, htmlBody, next);
+});
 
-const deactivateTimerUser = (user, next) => {
-  if (user) {
-    setTimeout(() => deactivateUser(user, next), 3000, user, next);
-  }
-};
+const disengageNewUser = catchAsync(async (user, next) => {
+  const userEmail = user.email;
+  const subject = `Hola, ${user.username}, te extrañamos NUEVA`;
+  const htmlBody = '<p>Usuario desactivado, una lástima</p>';
 
-const disengageNewUser = async (user, next) => {
   user.new = false;
   user.engaged = false;
   await user.save();
+  await sendEmail(userEmail, subject, htmlBody, next);
   deactivateTimerUser(user, next);
-};
+});
 
-const disengageTimerNewUser = (user, next) => {
-  if (user) {
-    setTimeout(() => disengageNewUser(user, next), 3000, user, next);
-  }
-};
+const disengageUser = catchAsync(async (user, next) => {
+  const userEmail = user.email;
+  const subject = `Hola, ${user.username}, te extrañamos`;
+  const htmlBody = '<p>Usuario desactivado, una lástima</p>';
 
-const disengageUser = async (user, next) => {
   user.reengaged = false;
   await user.save();
+  await sendEmail(userEmail, subject, htmlBody, next);
   deactivateTimerUser(user, next);
+});
+
+const deactivateTimerUser = (user, next) => {
+  setTimeout(() => deactivateUser(user, next), 3000, user, next);
 };
 
-const disengageTimerUser = (user, next) => {
+const disengageNewUserTimer = (user, next) => {
   if (user) {
-    setTimeout(() => disengageUser(user, next), 3000, user, next);
+    setTimeout(
+      () => disengageNewUser(user, next),
+      1000 * 60,
+      user,
+      next,
+      deactivateTimerUser
+    );
+  } else {
+    next(new AppError('Usuario no encontrado', 404));
   }
 };
 
-module.exports = { disengageTimerNewUser, disengageTimerUser };
+const disengageUserTimer = (user, next) => {
+  if (user) {
+    setTimeout(
+      () => disengageUser(user, next),
+      1000 * 60,
+      user,
+      next,
+      deactivateTimerUser
+    );
+  } else {
+    next(new AppError('Usuario no encontrado', 404));
+  }
+};
+
+module.exports = {
+  disengageNewUserTimer,
+  disengageUserTimer,
+  deactivateTimerUser,
+};
