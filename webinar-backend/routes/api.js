@@ -9,9 +9,11 @@ const {
   createUser,
   login,
   reengageUser,
+  getDate,
 } = require('../controllers/usersController');
 
 apiRoute.get('/user', getUser);
+apiRoute.get('/date', getDate);
 apiRoute.post('/users', celebrateCreateUserMiddleware(), createUser);
 apiRoute.post('/login', celebrateLoginMiddleware(), login);
 apiRoute.patch('/user/:id', reengageUser);

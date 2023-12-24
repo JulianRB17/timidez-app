@@ -10,6 +10,7 @@ const globalErrorHandler = require('./controllers/errorController');
 const { usersRoute } = require('./routes/users');
 const { apiRoute } = require('./routes/api');
 const { auth } = require('./middlewares/auth');
+const { phantomReengage } = require('./middlewares/phantom');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const limiter = require('./middlewares/rateLimit');
 const { emailRoute } = require('./routes/email');
@@ -43,6 +44,8 @@ app.get('/crash-test', () => {
 
 app.use(limiter);
 app.use('/api', xss(), apiRoute);
+app.use('/api/public', express.static('public'));
+app.use('/api/pixel/:id', phantomReengage, express.static('public/pixel.png'));
 app.use(auth);
 app.use('/api/users', usersRoute);
 app.use('/api/email', emailRoute);
@@ -71,9 +74,6 @@ process.on('unhandledRejection', (err) => {
   });
 });
 
-// En la automatización de mails modificar dos cosas
-// 1.- Se están mandando mails de 48 horas aunque falten menos de 48 horas, aquí es un si el timestamp es < 0 entonces no se manda
-// 2.- Se están mandando mails de webinar al momento de reiniciar el servidor, quizás hacer una timestamp del webinar al que se registraron en el schemma y ya no mandar los mails que ya se mandaron de alguna forma
 // Vinculación con frontend
 // Darme de alta en sendgrid u otro servidor de mails pros
 // Averiguar cómo funcionaría la inexistencia del tracking de emails durante el despliegue y si es necesaria la etiqueta de reengaged

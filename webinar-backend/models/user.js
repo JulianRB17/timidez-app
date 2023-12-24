@@ -71,3 +71,7 @@ userSchema.pre('save', function (next) {
 });
 
 module.exports = mongoose.model('User', userSchema);
+
+// Revisar el funcionamiento del save,
+// cómo funcionan las tags de new, engaged y reengaged bien
+// antes de codear

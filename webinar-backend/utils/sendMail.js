@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmail = catchAsync(async function (userEmail, subject, htmlBody) {
-  // await transporter.sendMail({
+  //   await transporter.sendMail({
   //   from: `"El julis" <eljulis@timidez.com>`,
   //   to: userEmail,
   //   bcc: EMAIL_USERNAME,

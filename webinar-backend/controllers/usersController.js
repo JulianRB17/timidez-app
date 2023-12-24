@@ -6,8 +6,6 @@ const catchAsync = require('./../utils/catchAsync');
 const AppError = require('../utils/appError');
 const { createSendToken } = require('../middlewares/auth');
 
-let JWT_SECRET;
-
 if (process.env.NODE_ENV !== 'production') {
   JWT_SECRET = process.env.JWT_SECRET;
 }
@@ -137,6 +135,22 @@ const getAdminUsers = catchAsync(async function (req, res, next) {
   res.status(200).json({ users, length: users.length });
 });
 
+const getDate = function (req, res, next) {
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+
+  const date = new Date(process.env.WEBINAR_DATE).toLocaleDateString(
+    'es-ES',
+    options
+  );
+
+  res.status(200).json({ date });
+};
+
 module.exports = {
   getCurrentUser,
   getUser,
@@ -151,4 +165,5 @@ module.exports = {
   getEngagedUsers,
   getClientUsers,
   getAdminUsers,
+  getDate,
 };
