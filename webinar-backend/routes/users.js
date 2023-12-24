@@ -5,17 +5,22 @@ const {
   deleteUser,
   createAdminUser,
   transformClient,
+  getActiveUsers,
+  getEngagedUsers,
+  getClientUsers,
+  getAdminUsers,
+  reengageUser,
 } = require('../controllers/usersController');
 
 usersRoute.get('/all', getUsers);
-usersRoute.post('/admin', createAdminUser);
-// usersRoute.patch('/activate/:id', activateUser);
-// usersRoute.patch('/deactivate/:id', deactivateUser);
-// usersRoute.patch('/engage/:id', engageUser);
-// usersRoute.patch('/disengage/:id', disengageUser);
-usersRoute.patch('/client/:id', transformClient);
-usersRoute.delete('/:id', deleteUser);
-
+usersRoute.get('/active', getActiveUsers);
+usersRoute.get('/engaged', getEngagedUsers);
+usersRoute.get('/client', getClientUsers);
+usersRoute.get('/admin', getAdminUsers);
 usersRoute.get('/current', getCurrentUser);
+usersRoute.post('/admin', createAdminUser);
+usersRoute.patch('/client/:id', transformClient);
+usersRoute.patch('/reengage/:id', reengageUser);
+usersRoute.delete('/:id', deleteUser);
 
 module.exports = { usersRoute };

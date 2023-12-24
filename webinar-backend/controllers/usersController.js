@@ -108,9 +108,33 @@ const createAdminUser = catchAsync(async function (req, res, next) {
     email,
     password: hash,
     admin: true,
+    active: true,
+    engaged: true,
+    reengaged: true,
+    client: true,
   });
   if (!user) return next(new AppError(error500, 500));
   createSendToken(user, res);
+});
+
+const getActiveUsers = catchAsync(async function (req, res, next) {
+  const users = await User.find({ active: true });
+  res.status(200).json({ users, length: users.length });
+});
+
+const getEngagedUsers = catchAsync(async function (req, res, next) {
+  const users = await User.find({ engaged: true });
+  res.status(200).json({ users, length: users.length });
+});
+
+const getClientUsers = catchAsync(async function (req, res, next) {
+  const users = await User.find({ client: true });
+  res.status(200).json({ users, length: users.length });
+});
+
+const getAdminUsers = catchAsync(async function (req, res, next) {
+  const users = await User.find({ admin: true });
+  res.status(200).json({ users, length: users.length });
 });
 
 module.exports = {
@@ -123,4 +147,8 @@ module.exports = {
   createAdminUser,
   reengageUser,
   transformClient,
+  getActiveUsers,
+  getEngagedUsers,
+  getClientUsers,
+  getAdminUsers,
 };

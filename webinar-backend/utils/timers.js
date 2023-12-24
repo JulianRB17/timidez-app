@@ -18,7 +18,7 @@ const deactivateUser = catchAsync(async (user, next) => {
 
   user.active = false;
   await user.save();
-  await sendEmail(userEmail, subject, htmlBody, next);
+  await sendEmail(userEmail, subject, htmlBody);
 });
 
 const disengageNewUser = catchAsync(async (user, next) => {
@@ -29,7 +29,7 @@ const disengageNewUser = catchAsync(async (user, next) => {
   user.new = false;
   user.engaged = false;
   await user.save();
-  await sendEmail(userEmail, subject, htmlBody, next);
+  sendEmail(userEmail, subject, htmlBody);
   deactivateTimerUser(user, next);
 });
 
@@ -40,7 +40,7 @@ const disengageUser = catchAsync(async (user, next) => {
 
   user.reengaged = false;
   await user.save();
-  sendEmail(userEmail, subject, htmlBody, next);
+  sendEmail(userEmail, subject, htmlBody);
   deactivateTimerUser(user, next);
 });
 
@@ -49,7 +49,7 @@ const registerUserEmail = (user, next) => {
   const subject = 'Registro a clase gratuita';
   const htmlBody = registrationHtmlEmail(username, date);
 
-  sendEmail(email, subject, htmlBody, next);
+  sendEmail(email, subject, htmlBody);
 };
 
 const reminder48Email = (user, next) => {
@@ -57,7 +57,7 @@ const reminder48Email = (user, next) => {
   const subject = '¡Nos vemos en 48 horas!';
   const htmlBody = reminder48HtmlEmail(username, date);
 
-  sendEmail(email, subject, htmlBody, next);
+  sendEmail(email, subject, htmlBody);
 };
 
 const reminder24Email = (user, next) => {
@@ -65,7 +65,7 @@ const reminder24Email = (user, next) => {
   const subject = 'YA ES MAÑANA';
   const htmlBody = reminder24HtmlEmail(username, date);
 
-  sendEmail(email, subject, htmlBody, next);
+  sendEmail(email, subject, htmlBody);
 };
 
 const reminder2Email = (user, next) => {
@@ -73,7 +73,7 @@ const reminder2Email = (user, next) => {
   const subject = 'En 2 horas es la clase gratuita, vete preparando';
   const htmlBody = reminder2HtmlEmail(username, date);
 
-  sendEmail(email, subject, htmlBody, next);
+  sendEmail(email, subject, htmlBody);
 };
 
 const setToHappen = (fn, hours, user, next) => {
@@ -98,7 +98,12 @@ const reminder2Timer = (user, next) => {
 };
 
 const deactivateTimerUser = (user, next) => {
-  setTimeout(() => deactivateUser(user, next), 1000, user, next);
+  setTimeout(
+    () => deactivateUser(user, next),
+    1000 * 60 * 60 * 24 * 30,
+    user,
+    next
+  );
 };
 
 const registerUserTimer = (user, next) => {
@@ -112,7 +117,7 @@ const disengageNewUserTimer = (user, next) => {
   if (user) {
     setTimeout(
       () => disengageNewUser(user, next),
-      1000,
+      1000 * 60 * 60 * 24 * 23,
       user,
       next,
       deactivateTimerUser
@@ -126,7 +131,7 @@ const disengageUserTimer = (user, next) => {
   if (user) {
     setTimeout(
       () => disengageUser(user, next),
-      1000,
+      1000 * 60 * 60 * 24 * 23,
       user,
       next,
       deactivateTimerUser

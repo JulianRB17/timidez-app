@@ -5,6 +5,7 @@ const {
   disengageUserTimer,
   registerUserTimer,
 } = require('../utils/timers');
+const catchAsync = require('../utils/catchAsync');
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -59,7 +60,7 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre('save', function (next) {
-  if (!this.client) {
+  if (!this.client || !this.admin) {
     if (this.new) {
       disengageNewUserTimer(this, next);
       registerUserTimer(this, next);
@@ -70,5 +71,3 @@ userSchema.pre('save', function (next) {
 });
 
 module.exports = mongoose.model('User', userSchema);
-
-//ARREGLAR ERROR DE DUPLICADOS COSOS DE REGISTRO
