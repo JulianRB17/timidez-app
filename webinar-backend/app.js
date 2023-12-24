@@ -68,11 +68,7 @@ process.on('unhandledRejection', (err) => {
   });
 });
 
-// EMAILS:
-
-// Escribir mails
+// Vinculación con frontend
 // Darme de alta en sendgrid u otro servidor de mails pros
 // Tracking de emails
-
-// Vinculación con frontend
 // Elementos para despliegue

@@ -6,11 +6,11 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/ventas-l/page": [
+    "/registro/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/ventas-l/page.css",
-      "static/chunks/app/ventas-l/page.js"
+      "static/css/app/registro/page.css",
+      "static/chunks/app/registro/page.js"
     ]
   }
 }

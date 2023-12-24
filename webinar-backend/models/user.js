@@ -3,6 +3,7 @@ const validator = require('validator');
 const {
   disengageNewUserTimer,
   disengageUserTimer,
+  registerUserTimer,
 } = require('../utils/timers');
 
 const userSchema = new mongoose.Schema({
@@ -59,10 +60,15 @@ const userSchema = new mongoose.Schema({
 
 userSchema.pre('save', function (next) {
   if (!this.client) {
-    if (this.new) disengageNewUserTimer(this, next);
+    if (this.new) {
+      disengageNewUserTimer(this, next);
+      registerUserTimer(this, next);
+    }
     if (this.reengaged) disengageUserTimer(this, next);
   }
   next();
 });
 
 module.exports = mongoose.model('User', userSchema);
+
+//ARREGLAR ERROR DE DUPLICADOS COSOS DE REGISTRO

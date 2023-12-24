@@ -25,7 +25,7 @@ export default function Bio() {
           initial={{ x: '-0.5rem' }}
           whileInView={{ x: 0, transition: { duration: 1 } }}
         >
-          Puedo comenzar con mis credenciales:{' '}
+          Hola, me presento un poco:{' '}
           <span className="bio__text-accent">
             soy actor con más de 10 años de trayectoria{' '}
           </span>

@@ -65,13 +65,22 @@ const transformClient = async function (req, res, next) {
 
 const createUser = catchAsync(async function (req, res, next) {
   const { username, email } = req.body;
-  const user = await User.create({
-    username,
-    email,
-  });
-  if (!user) return next(new AppError(error500, 500));
-
-  res.json({ user: user });
+  const user = await User.findOne({ email });
+  if (user) {
+    user.engaged = true;
+    user.new = true;
+    user.reengaged = false;
+    user.active = true;
+    user.save();
+    res.json({ user });
+  }
+  if (!user) {
+    const newUser = await User.create({
+      username,
+      email,
+    });
+    res.json({ user: newUser });
+  }
 });
 
 const login = catchAsync(async function (req, res, next) {

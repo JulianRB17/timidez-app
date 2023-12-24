@@ -1,4 +1,3 @@
 {
-  "/ventas-l/page": "app/ventas-l/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/registro/page": "app/registro/page.js"
 }

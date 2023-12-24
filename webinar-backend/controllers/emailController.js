@@ -12,7 +12,6 @@ const sendManualEmail = catchAsync(async function (req, res, next) {
 
   users.forEach((user) => {
     const userEmail = user.email;
-    const { username } = user;
     if (!userEmail) return;
     sendEmail(userEmail, subject, htmlBody, next);
   });
