@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
+const cors = require('cors');
 // revisar último video de seguridad si decido usar parámetros
 
 const AppError = require('./utils/appError');
@@ -35,6 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
 
 app.use(mongoSanitize());
+app.use(cors());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -44,8 +46,13 @@ app.get('/crash-test', () => {
 
 app.use(limiter);
 app.use('/api', xss(), apiRoute);
-app.use('/api/public', express.static('public'));
-app.use('/api/pixel/:id', phantomReengage, express.static('public/pixel.png'));
+app.use('/api/public', cors(), express.static('public'));
+app.use(
+  '/api/pixel/:id',
+  cors(),
+  phantomReengage,
+  express.static('public/pixel.png')
+);
 app.use(auth);
 app.use('/api/users', usersRoute);
 app.use('/api/email', emailRoute);
@@ -75,7 +82,8 @@ process.on('unhandledRejection', (err) => {
 });
 
 // Vinculación con frontend
+// Mandar un email y ver si al abrirlo se hace la fetch al pixel fantasma
 // Darme de alta en sendgrid u otro servidor de mails pros
-// Averiguar cómo funcionaría la inexistencia del tracking de emails durante el despliegue y si es necesaria la etiqueta de reengaged
 // Elementos para despliegue
-// Tracking de emails
+
+// FALTA VER ESTRUCTURA EN MP: Crear mails post webinar y de no me olvides

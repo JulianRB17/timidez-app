@@ -44,10 +44,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  reengaged: {
-    type: Boolean,
-    default: false,
-  },
+  // reengaged: {
+  //   type: Boolean,
+  //   default: false,
+  // },
   date: {
     type: Date,
     required: true,
@@ -61,17 +61,18 @@ const userSchema = new mongoose.Schema({
 
 userSchema.pre('save', function (next) {
   if (!this.client || !this.admin) {
+    // if (this.new) {
+    //   disengageNewUserTimer(this, next);
+    //   registerUserTimer(this, next);
+    // }
+    // if (this.reengaged) disengageUserTimer(this, next);
+
     if (this.new) {
-      disengageNewUserTimer(this, next);
       registerUserTimer(this, next);
     }
-    if (this.reengaged) disengageUserTimer(this, next);
+    disengageUserTimer(this, next);
   }
   next();
 });
 
 module.exports = mongoose.model('User', userSchema);
-
-// Revisar el funcionamiento del save,
-// cómo funcionan las tags de new, engaged y reengaged bien
-// antes de codear

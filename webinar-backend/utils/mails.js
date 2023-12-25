@@ -519,6 +519,15 @@ const reminder48HtmlEmail = (user, date) => {
 
 const reminder24HtmlEmail = (user, date) => {
   const { username, _id } = user;
+  
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+
+  const localDate = new Date(date).toLocaleDateString('es-ES', options);
 
   return `<html lang="es">
   <head>
