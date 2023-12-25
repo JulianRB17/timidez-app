@@ -1,17 +1,16 @@
 import { motion } from 'framer-motion';
 import './venta.css';
-import Image from 'next/image';
 
 export default function Venta() {
   return (
     <section className="venta">
-      <Image
+      {/* <Image
         width={300}
         height={300}
         alt="metodología"
         src="/metodologia.webp"
         className="info__img"
-      />
+      /> */}
       <motion.ul
         className="venta__container"
         initial={{ x: '-0.5rem' }}

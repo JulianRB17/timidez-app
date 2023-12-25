@@ -28,12 +28,12 @@ const updateUser = async function (findObject, updateObject, next) {
 const getUser = async function (req, res, next) {
   const user = await User.findOne({ email: req.body.email });
   if (!user) return next(new AppError(error404, 404));
-  res.json({ user: user });
+  res.json({ user });
 };
 
 const getUsers = catchAsync(async function (req, res, next) {
   const users = await User.find({});
-  res.json({ users: users });
+  res.json({ users });
 });
 
 const getCurrentUser = catchAsync(async function (req, res, next) {

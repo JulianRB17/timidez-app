@@ -73,7 +73,6 @@ const server = app.listen(PORT, () => {
 });
 
 process.on('unhandledRejection', (err) => {
-  // MANDARME MAIL AQUÍ AUTOMATIZAR EL RESETEO DEL SERVER
   console.log('UNHANDLED REJECTION... app cerrándose');
   console.log(err.name, err.message);
   server.close(() => {

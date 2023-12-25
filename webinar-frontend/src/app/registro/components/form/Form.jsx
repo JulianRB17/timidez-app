@@ -2,50 +2,45 @@
 import { useState } from 'react';
 import './form.css';
 import { motion } from 'framer-motion';
+import Loader from '@/components/loader/Loader';
 
 export default function Form() {
-  const [form, setForm] = useState({
+  const [formValues, setFormValues] = useState({
     name: '',
     email: '',
     message: '',
   });
   const [loading, setLoading] = useState(false);
+  const [isValidForm, setValidForm] = useState(false);
+  const backendHost = process.env.NEXT_PUBLIC_BACKEND_HOST;
 
   const handleChange = (e) => {
     const { target } = e;
     const { id, value } = target;
-    setForm({
-      ...form,
+    setFormValues({
+      ...formValues,
       [id]: value,
     });
+    setValidForm(target.form.checkValidity());
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // setLoading(true);
-    // try {
-    //   const result = await emailjs.sendForm(
-    //     process.env.REACT_APP_EMAILJS_SERVICE_ID,
-    //     process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-    //     formRef.current,
-    //     process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-    //   );
-    //   setLoading(false);
-
-    //   if (result) {
-    //     setForm({
-    //       name: '',
-    //       email: '',
-    //       message: '',
-    //     });
-    //     alert('Thank you. I will get back to you as soon as possible.');
-    //   }
-    // } catch (error) {
-    //   setLoading(false);
-    //   console.error(error);
-
-    //   alert('Ahh, something went wrong. Please try again.');
-    // }
+    setLoading(true);
+    try {
+      if (result) {
+        setFormValues({
+          name: '',
+          email: '',
+          message: '',
+        });
+      }
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+      alert('Ahh, algo salió malo, por favor vuelve a intentarlo.');
+    }
   };
 
   return (
@@ -69,6 +64,8 @@ export default function Form() {
             id="name"
             placeholder="Escribe tu nombre aquí"
             onChange={handleChange}
+            maxLength={11}
+            required
           />
           <p className="form__error-msg">Escribe tu nombre correctamente.</p>
           <label htmlFor="email" className="form__label">
@@ -81,17 +78,22 @@ export default function Form() {
             id="email"
             placeholder="Coloca tu email para mandarte la invitación"
             onChange={handleChange}
+            autoComplete="on"
+            required
           />
           <p className="form__error-msg">Escribe un email válido.</p>
           <motion.button
             type="submit"
-            className="form__btn"
-            whileHover={{
-              scale: 1.1,
-            }}
-            whileTap={{ scale: 0.9 }}
+            className={`form__btn ${isValidForm || 'form__btn-inactive'}`}
+            disabled={!isValidForm}
+            whileHover={
+              isValidForm && {
+                scale: 1.1,
+              }
+            }
+            whileTap={isValidForm && { scale: 0.9 }}
           >
-            APARTA MI LUGAR
+            {loading ? <Loader /> : 'APARTA MI LUGAR'}
           </motion.button>
         </div>
       </form>

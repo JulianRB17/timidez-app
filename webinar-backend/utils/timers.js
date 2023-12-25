@@ -97,17 +97,17 @@ const deactivateTimerUser = (user) => {
   setTimeout(() => deactivateUser(user), 1000 * 60 * 60 * 24 * 30, user);
 };
 
-const verifyRegistrationDate = (user, fn) => {
+const verifyNowAndRegistrationDate = (user, fn) => {
   const now = new Date().getTime();
   const userCreationAndNowHourSubstraction =
-    (now - user.date.getTime()) / (1000 * 60 * 60);
-  if (userCreationAndNowHourSubstraction < 0.3) {
+    (now - user.date.getTime()) / (1000 * 60);
+  if (userCreationAndNowHourSubstraction < 10) {
     fn(user);
   }
 };
 
 const registerUserTimer = (user) => {
-  verifyRegistrationDate(user, registerUserEmail);
+  verifyNowAndRegistrationDate(user, registerUserEmail);
   reminder48Timer(user);
   reminder24Timer(user);
   reminder2Timer(user);
