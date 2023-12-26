@@ -21,7 +21,7 @@ class Api {
 
   getUserInfo(jwt) {
     this._jwt = jwt;
-    this._specificUrl = 'users/me';
+    this._specificUrl = 'users/current';
     this._options.method = 'GET';
     delete this._options.body;
     return this._fetchData();
@@ -49,6 +49,13 @@ class Api {
 
   getUsers() {
     this._specificUrl = 'users/all';
+    this._options.method = 'GET';
+    delete this._options.body;
+    return this._fetchData();
+  }
+
+  getNumbers() {
+    this._specificUrl = 'users/numbers';
     this._options.method = 'GET';
     delete this._options.body;
     return this._fetchData();
@@ -105,7 +112,7 @@ class Api {
 
   postEmail(data) {
     const { subject, htmlBody } = data;
-    this._specificUrl = '/email';
+    this._specificUrl = 'email';
     this._options.method = 'POST';
     this._options.body = JSON.stringify({
       subject,

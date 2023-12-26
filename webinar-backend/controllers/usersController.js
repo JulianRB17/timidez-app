@@ -150,6 +150,16 @@ const getDate = function (req, res, next) {
   res.status(200).json({ date });
 };
 
+const getNumbers = catchAsync(async function (req, res, next) {
+  const users = await User.find({ active: true });
+  const all = (await User.find({})).length;
+  const active = (await User.find({ active: true })).length;
+  const engaged = (await User.find({ engaged: true })).length;
+  const client = (await User.find({ client: true })).length;
+  const admin = (await User.find({ admin: true })).length;
+  res.status(200).json({ all, active, engaged, client, admin });
+});
+
 module.exports = {
   getCurrentUser,
   getUser,
@@ -165,4 +175,5 @@ module.exports = {
   getClientUsers,
   getAdminUsers,
   getDate,
+  getNumbers,
 };

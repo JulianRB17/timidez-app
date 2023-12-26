@@ -5,18 +5,18 @@ const { sendEmail } = require('../utils/sendMail');
 require('dotenv').config();
 
 const sendManualEmail = catchAsync(async function (req, res, next) {
-  const users = await User.find({ active: true }, { email: 1, username: 1 });
   const { subject, htmlBody } = req.body;
   if (!subject || !htmlBody)
     return next(new AppError('Necesita mandarse asunto y html', 401));
 
+  const users = await User.find({ active: true }, { email: 1, username: 1 });
   users.forEach((user) => {
     const userEmail = user.email;
     if (!userEmail) return;
     sendEmail(userEmail, subject, htmlBody, next);
   });
 
-  res.status(200).json({ users });
+  res.status(200).json({ message: 'Mails enviados' });
 });
 
 // class Email {

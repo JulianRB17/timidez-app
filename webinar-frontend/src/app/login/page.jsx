@@ -13,7 +13,6 @@ export default function Login() {
   });
   const [loading, setLoading] = useState(false);
   const [isValidForm, setValidForm] = useState(false);
-  const [jwt, setJwt] = useState('');
 
   const router = useRouter();
 
@@ -25,7 +24,6 @@ export default function Login() {
           setLoading(true);
           const res = await checkToken(token);
           if (res) {
-            setJwt(token);
             setLoading(false);
             router.replace('/admin');
           } else {
@@ -43,7 +41,6 @@ export default function Login() {
       setLoading(true);
       const data = await authorize(formValues);
       if (data.token) {
-        setJwt(data.token);
         localStorage.setItem('jwt', data.token);
         setLoading(false);
         router.replace('/admin');
@@ -71,13 +68,10 @@ export default function Login() {
     setLoading(true);
     try {
       await handleLogin();
-      //NO SË SI ES ASÏ, EN LA VERSIÓN ORIGINAL ERA UNA VARIABLE LLAMADA RESULT
-      if (jwt) {
-        setFormValues({
-          name: '',
-          password: '',
-        });
-      }
+      setFormValues({
+        name: '',
+        password: '',
+      });
       setLoading(false);
     } catch (error) {
       setLoading(false);

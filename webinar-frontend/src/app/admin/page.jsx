@@ -12,6 +12,19 @@ import Loader from '@/components/loader/Loader';
 export default function Admin() {
   const [jwt, setJwt] = useState('');
   const [loading, setLoading] = useState(true);
+  const [numbers, setNumbers] = useState({
+    all: '',
+    active: '',
+    engaged: '',
+    client: '',
+    admin: '',
+  });
+  const [emailFormValues, setEmailFormValues] = useState({
+    subject: '',
+    htmlBody: '',
+  });
+  const [isValidForm, setValidForm] = useState(false);
+  const [emailLoading, setEmailLoading] = useState(false);
 
   const router = useRouter();
 
@@ -24,6 +37,8 @@ export default function Admin() {
           if (res) {
             setJwt(token);
             await api.getUserInfo(token);
+            const numbers = await api.getNumbers();
+            setNumbers(numbers);
             setLoading(false);
           } else {
             router.replace('/login');
@@ -37,9 +52,38 @@ export default function Admin() {
     })();
   }, [router]);
 
+  const handleChange = (e) => {
+    const { target } = e;
+    const { id, value } = target;
+    setEmailFormValues({
+      ...emailFormValues,
+      [id]: value,
+    });
+    setValidForm(target.form.checkValidity());
+  };
+
+  const handleEmailSubmit = async (e) => {
+    e.preventDefault();
+    setEmailLoading(true);
+    const result = await api.postEmail(emailFormValues);
+    try {
+      if (result) {
+        setEmailFormValues({
+          htmlBody: '',
+          subject: '',
+        });
+      }
+      setEmailLoading(false);
+    } catch (error) {
+      setEmailLoading(false);
+      console.error(error);
+      alert('Ahh, algo salió mal, por favor vuelve a intentarlo.');
+    }
+  };
+
   function handleLogout(e) {
     e.preventDefault();
-    // setJwt('');
+    setJwt('');
     localStorage.removeItem('jwt');
     router.replace('/login');
   }
@@ -50,8 +94,13 @@ export default function Admin() {
         <Loader />
       ) : (
         <>
-          <Numbers api={api} />
-          <Email api={api} />
+          <Numbers numbers={numbers} loading={loading} />
+          <Email
+            emailLoading={emailLoading}
+            isValidForm={isValidForm}
+            onChange={handleChange}
+            onSubmit={handleEmailSubmit}
+          />
           <BtnLogout onClick={handleLogout} />
         </>
       )}

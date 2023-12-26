@@ -25,6 +25,7 @@ const sendEmail = catchAsync(async function (userEmail, subject, htmlBody) {
   //   html: htmlBody,
   //   text: convert(htmlBody),
   // });
+  console.log(userEmail, htmlBody, subject);
 });
 
 module.exports = { sendEmail };
