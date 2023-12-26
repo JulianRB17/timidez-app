@@ -6,13 +6,11 @@ import Loader from '@/components/loader/Loader';
 
 export default function Form() {
   const [formValues, setFormValues] = useState({
-    name: '',
+    username: '',
     email: '',
-    message: '',
   });
   const [loading, setLoading] = useState(false);
   const [isValidForm, setValidForm] = useState(false);
-  const backendHost = process.env.NEXT_PUBLIC_BACKEND_HOST;
 
   const handleChange = (e) => {
     const { target } = e;
@@ -30,9 +28,8 @@ export default function Form() {
     try {
       if (result) {
         setFormValues({
-          name: '',
+          username: '',
           email: '',
-          message: '',
         });
       }
       setLoading(false);
@@ -61,7 +58,7 @@ export default function Form() {
           <input
             type="text"
             className="form__input"
-            id="name"
+            id="username"
             placeholder="Escribe tu nombre aquí"
             onChange={handleChange}
             maxLength={11}

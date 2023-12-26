@@ -1,6 +1,6 @@
 class Api {
   constructor() {
-    this._baseUrl = 'http://127.0.0.1:3001/api';
+    this._baseUrl = 'http://127.0.0.1:3001/api/';
     this._options = {
       headers: {
         'Content-Type': 'application/json',
@@ -9,17 +9,14 @@ class Api {
     };
   }
 
-  async _fetchData() {
-    try {
-      if (this._jwt) {
-        this._options.headers.authorization = `Bearer ${this._jwt}`;
-      }
-      const res = await fetch(this._baseUrl + this._specificUrl, this._options);
-      if (res.ok) return res.json();
-      return Promise.reject(`Error: ${res.status}`);
-    } catch (err) {
-      console.error(err);
-    }
+  _fetchData() {
+    if (this._jwt) this._options.headers.authorization = `Bearer ${this._jwt}`;
+    return fetch(this._baseUrl + this._specificUrl, this._options)
+      .then((res) => {
+        if (res.ok) return res.json();
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => console.error(err));
   }
 
   getUserInfo(jwt) {
@@ -30,9 +27,71 @@ class Api {
     return this._fetchData();
   }
 
-  getUser(id) {
-    this._specificUrl = `users/${id} `;
+  getDate() {
+    this._specificUrl = 'date';
     this._options.method = 'GET';
+    delete this._options.body;
+    return this._fetchData();
+  }
+
+  postUser(data) {
+    const { username, email } = data;
+    this._specificUrl = 'users';
+    this._options.method = 'POST';
+    this._options.body = JSON.stringify({
+      username,
+      email,
+    });
+    return this._fetchData();
+  }
+
+  // Protected routes
+
+  getUsers() {
+    this._specificUrl = 'users/all';
+    this._options.method = 'GET';
+    delete this._options.body;
+    return this._fetchData();
+  }
+
+  getActiveUsers() {
+    this._specificUrl = 'users/active';
+    this._options.method = 'GET';
+    delete this._options.body;
+    return this._fetchData();
+  }
+
+  getEngagedUsers() {
+    this._specificUrl = 'users/engaged';
+    this._options.method = 'GET';
+    delete this._options.body;
+    return this._fetchData();
+  }
+
+  getClientUsers() {
+    this._specificUrl = 'users/client';
+    this._options.method = 'GET';
+    delete this._options.body;
+    return this._fetchData();
+  }
+
+  getAdminUsers() {
+    this._specificUrl = 'users/admin';
+    this._options.method = 'GET';
+    delete this._options.body;
+    return this._fetchData();
+  }
+
+  updateToClientUser(id) {
+    this._specificUrl = `users/client/${id}`;
+    this._options.method = 'PATCH';
+    delete this._options.body;
+    return this._fetchData();
+  }
+
+  updateReengagetUser(id) {
+    this._specificUrl = `users/reengage/${id}`;
+    this._options.method = 'PATCH';
     delete this._options.body;
     return this._fetchData();
   }
@@ -44,96 +103,14 @@ class Api {
     return this._fetchData();
   }
 
-  deleteProyect(id) {
-    this._specificUrl = `proyects/${id} `;
-    this._options.method = 'DELETE';
-    delete this._options.body;
-    return this._fetchData();
-  }
-
-  createProyect(data) {
-    const { proyectName, description, discipline, city, proyectPic } = data;
-    this._specificUrl = 'proyects';
+  postEmail(data) {
+    const { subject, htmlBody } = data;
+    this._specificUrl = '/email';
     this._options.method = 'POST';
     this._options.body = JSON.stringify({
-      proyectPic,
-      proyectName,
-      description,
-      city,
-      discipline,
+      subject,
+      htmlBody,
     });
-    return this._fetchData();
-  }
-
-  updateUserInfo(data) {
-    const { username, city, description, discipline, password, profilePic } =
-      data;
-    this._specificUrl = 'users/me';
-    this._options.method = 'PATCH';
-    this._options.body = JSON.stringify({
-      username,
-      city,
-      description,
-      discipline,
-      password,
-      profilePic,
-    });
-    return this._fetchData();
-  }
-
-  updateUserColaborationsInfo(proyectId) {
-    this._specificUrl = 'users/colaborate';
-    this._options.method = 'PATCH';
-    this._options.body = JSON.stringify({ proyectId });
-    return this._fetchData();
-  }
-
-  updateUserCreatedInfo(proyectId) {
-    this._specificUrl = 'users/create';
-    this._options.method = 'PATCH';
-    this._options.body = JSON.stringify({ proyectId });
-    return this._fetchData();
-  }
-
-  getProyects() {
-    this._specificUrl = 'proyects';
-    this._options.method = 'GET';
-    delete this._options.body;
-    return this._fetchData();
-  }
-
-  getMyProyects() {
-    this._specificUrl = 'proyects/created';
-    this._options.method = 'GET';
-    delete this._options.body;
-    return this._fetchData();
-  }
-
-  getProyect(id) {
-    this._specificUrl = `proyects/${id}`;
-    this._options.method = 'GET';
-    delete this._options.body;
-    return this._fetchData();
-  }
-
-  updateProyectInfo(data, id) {
-    const { proyectName, description, city, discipline, proyectPic } = data;
-    this._specificUrl = `proyects/${id}`;
-    this._options.method = 'PATCH';
-    this._options.body = JSON.stringify({
-      proyectName,
-      description,
-      city,
-      discipline,
-      proyectPic,
-    });
-    return this._fetchData();
-  }
-
-  updateProyectColaborations(proyectId) {
-    this._specificUrl = `proyects/colaborate/${proyectId}`;
-    this._options.method = 'PATCH';
-    delete this._options.body;
     return this._fetchData();
   }
 }

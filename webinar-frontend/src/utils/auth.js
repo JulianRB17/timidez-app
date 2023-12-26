@@ -44,12 +44,10 @@ const checkToken = async function (token) {
         Authorization: `Bearer ${token}`,
       },
     });
-
-    if (res.status === 400 || 403 || 401)
+    if (res.status === 400 && 403 && 401) {
       throw new Error('Token incorrecto o no proporcionado');
-    else {
+    } else {
       const json = await res.json();
-      console.log(json);
       return json;
     }
   } catch (err) {
