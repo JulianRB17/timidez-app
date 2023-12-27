@@ -1,0 +1,14 @@
+.btn-logout {
+  padding: 0.5em 2em;
+  font-size: 1.3rem;
+  border-radius: 0.5em;
+  color: #000821;
+  box-shadow: #000821 1px 1px, #000821 -1px -1px, #000821 1px -1px,
+    #000821 -1px 1px;
+  cursor: pointer;
+  margin: 2em 0;
+  z-index: 1;
+  width: 40%;
+  background-color: #ffe3bc;
+  align-self: center;
+}

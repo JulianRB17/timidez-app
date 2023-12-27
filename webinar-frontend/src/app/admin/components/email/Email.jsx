@@ -1,41 +1,71 @@
 import Loader from '@/components/loader/Loader';
+import './email.css';
 
 export default function Email({
   emailLoading,
   isValidForm,
   onChange,
   onSubmit,
+  mailSent,
+  mailSuccesfullySent,
+  setMailSent,
 }) {
+  const RenderBtn = function () {
+    if (!mailSent) {
+      return (
+        <button
+          type="submit"
+          className={`email__btn ${isValidForm || 'email__btn-inactive'}`}
+          disabled={!isValidForm}
+        >
+          {emailLoading ? <Loader /> : 'ENVIAR MAIL'}
+        </button>
+      );
+    }
+    if (mailSent && mailSuccesfullySent) {
+      window.setTimeout(() => {
+        setMailSent(false);
+      }, 5000);
+      return <p className="email__message">Mensaje enviado</p>;
+    }
+    if (mailSent && !mailSuccesfullySent) {
+      window.setTimeout(() => {
+        setMailSent(false);
+      }, 5000);
+      return (
+        <p className="email__mesage email__message_failed">
+          Mensaje no enviado
+        </p>
+      );
+    }
+  };
+
   return (
-    <form action="" className="admin__mail" onSubmit={onSubmit}>
-      <div className="admin__element">
-        <p className="admin__form-label">Email</p>
-        <div className="admin__element">
-          <p className="admin__label">Asunto</p>
+    <form action="" className="email" onSubmit={onSubmit}>
+      <div className="email__element">
+        <p className="email__form-label">EMAIL</p>
+        <div className="email__element">
+          <p className="email__label">Asunto</p>
           <input
             type="text"
-            className="admin__input"
+            className="email__input"
             id="subject"
             onChange={onChange}
             required
           />
         </div>
-        <div className="admin__element">
-          <p className="admin__label">Html</p>
+        <div className="email__element">
+          <p className="email__label">Html</p>
           <textarea
-            className="admin__input"
+            className="email__input"
             id="htmlBody"
             onChange={onChange}
             required
           />
         </div>
-        <button
-          type="submit"
-          className={`admin__btn ${isValidForm || 'admin__btn-inactive'}`}
-          disabled={!isValidForm}
-        >
-          {emailLoading ? <Loader /> : 'ENVIAR MAIL'}
-        </button>
+      </div>
+      <div className="email__element">
+        <RenderBtn />
       </div>
     </form>
   );

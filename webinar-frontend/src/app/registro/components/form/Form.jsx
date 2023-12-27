@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './form.css';
 import { motion } from 'framer-motion';
 import Loader from '@/components/loader/Loader';
+import api from '@/utils/api';
 
 export default function Form() {
   const [formValues, setFormValues] = useState({
@@ -11,6 +12,8 @@ export default function Form() {
   });
   const [loading, setLoading] = useState(false);
   const [isValidForm, setValidForm] = useState(false);
+  const [msgSuccess, setMsgSuccess] = useState(true);
+  const [sentUser, setSentUser] = useState(false);
 
   const handleChange = (e) => {
     const { target } = e;
@@ -26,17 +29,62 @@ export default function Form() {
     e.preventDefault();
     setLoading(true);
     try {
-      if (result) {
-        setFormValues({
-          username: '',
-          email: '',
-        });
+      const data = await api.postUser(formValues);
+      if (!data.user) {
+        setMsgSuccess(false);
       }
+      if (data.user) {
+        setMsgSuccess(true);
+      }
+      setFormValues({
+        username: '',
+        email: '',
+      });
+      setSentUser(true);
       setLoading(false);
+      return;
     } catch (error) {
       setLoading(false);
       console.error(error);
       alert('Ahh, algo salió malo, por favor vuelve a intentarlo.');
+    }
+  };
+
+  const SendBtn = function () {
+    if (!sentUser) {
+      return (
+        <motion.button
+          type="submit"
+          className={`form__btn ${isValidForm || 'form__btn-inactive'}`}
+          disabled={!isValidForm}
+          whileHover={
+            isValidForm && {
+              scale: 1.1,
+            }
+          }
+          whileTap={isValidForm && { scale: 0.9 }}
+        >
+          {loading ? <Loader /> : 'APARTA MI LUGAR'}
+        </motion.button>
+      );
+    }
+    if (sentUser && !msgSuccess) {
+      window.setTimeout(() => {
+        setSentUser(false);
+      }, 3000);
+
+      return (
+        <p className="form__msg form__msg_failed">
+          Algo salió mal, vuelve a intentarlo más tarde
+        </p>
+      );
+    }
+    if (sentUser && msgSuccess) {
+      window.setTimeout(() => {
+        setSentUser(false);
+      }, 3000);
+
+      return <p className="form__msg">Usuario registrado</p>;
     }
   };
 
@@ -79,20 +127,8 @@ export default function Form() {
             required
           />
           <p className="form__error-msg">Escribe un email válido.</p>
-          <motion.button
-            type="submit"
-            className={`form__btn ${isValidForm || 'form__btn-inactive'}`}
-            disabled={!isValidForm}
-            whileHover={
-              isValidForm && {
-                scale: 1.1,
-              }
-            }
-            whileTap={isValidForm && { scale: 0.9 }}
-          >
-            {loading ? <Loader /> : 'APARTA MI LUGAR'}
-          </motion.button>
         </div>
+        <SendBtn />
       </form>
       <p className="form__credits">Fotografía: Carlos Alvar</p>
       <p className="form__credits">Dirección escénica: Julián Reyes Botello</p>

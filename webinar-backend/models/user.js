@@ -5,12 +5,10 @@ const {
   disengageUserTimer,
   registerUserTimer,
 } = require('../utils/timers');
-const catchAsync = require('../utils/catchAsync');
 
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    minlength: 3,
     maxlength: 30,
     required: true,
   },

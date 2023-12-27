@@ -8,6 +8,7 @@ import { checkToken } from '@/utils/auth';
 import BtnLogout from './components/btnLogout/BtnLogout';
 import api from '@/utils/api';
 import Loader from '@/components/loader/Loader';
+import './admin.css';
 
 export default function Admin() {
   const [jwt, setJwt] = useState('');
@@ -25,6 +26,8 @@ export default function Admin() {
   });
   const [isValidForm, setValidForm] = useState(false);
   const [emailLoading, setEmailLoading] = useState(false);
+  const [mailSuccesfullySent, setMailSuccesfullySent] = useState(false);
+  const [mailSent, setMailSent] = useState(false);
 
   const router = useRouter();
 
@@ -74,8 +77,12 @@ export default function Admin() {
         });
       }
       setEmailLoading(false);
+      setMailSent(true);
+      setMailSuccesfullySent(true);
     } catch (error) {
       setEmailLoading(false);
+      setMailSent(true);
+      setMailSuccesfullySent(false);
       console.error(error);
       alert('Ahh, algo salió mal, por favor vuelve a intentarlo.');
     }
@@ -100,6 +107,9 @@ export default function Admin() {
             isValidForm={isValidForm}
             onChange={handleChange}
             onSubmit={handleEmailSubmit}
+            mailSent={mailSent}
+            mailSuccesfullySent={mailSuccesfullySent}
+            setMailSent={setMailSent}
           />
           <BtnLogout onClick={handleLogout} />
         </>
@@ -107,3 +117,5 @@ export default function Admin() {
     </section>
   );
 }
+
+// Crear un estado de mailSuccesfullySend que sea booleano y si el mail se manda correctamente cambiar el color de algo

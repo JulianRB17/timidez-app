@@ -66,7 +66,6 @@ const createUser = catchAsync(async function (req, res, next) {
   if (user) {
     user.engaged = true;
     user.new = true;
-    user.reengaged = false;
     user.active = true;
     user.save();
     res.json({ user });
@@ -151,7 +150,6 @@ const getDate = function (req, res, next) {
 };
 
 const getNumbers = catchAsync(async function (req, res, next) {
-  const users = await User.find({ active: true });
   const all = (await User.find({})).length;
   const active = (await User.find({ active: true })).length;
   const engaged = (await User.find({ engaged: true })).length;

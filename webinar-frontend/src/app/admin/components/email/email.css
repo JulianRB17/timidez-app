@@ -1,0 +1,49 @@
+textarea {
+  height: 400px;
+}
+
+.email {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+}
+
+.email__form-label {
+  font-size: 2rem;
+}
+
+.email__element {
+  width: 90%;
+  background-color: #000821;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.email__label {
+  font-size: 1.5rem;
+  margin: 0.5em;
+}
+
+.email__input {
+  margin-bottom: 2em;
+  width: 80%;
+  min-height: 2em;
+  background-color: #ccc7e1;
+}
+
+.email__btn {
+  background-color: #e17900;
+  padding: 0.5em 2em;
+  font-size: 1.3rem;
+  border-radius: 0.5em;
+  color: #ffe3bc;
+  box-shadow: #ffe3bc 1px 1px, #ffe3bc -1px -1px, #ffe3bc 1px -1px,
+    #ffe3bc -1px 1px;
+  cursor: pointer;
+  margin: 2em 0;
+  z-index: 1;
+  width: 40%;
+}

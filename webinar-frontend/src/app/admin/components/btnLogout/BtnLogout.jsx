@@ -1,3 +1,5 @@
+import './btnLogout.css';
+
 export default function BtnLogout({ onClick }) {
   return (
     <button onClick={onClick} className="btn-logout">

@@ -583,6 +583,17 @@
   font-size: 1rem;
 }
 
+.form__msg {
+  align-self: center;
+  font-size: 1.5rem;
+  color: #ffe3bc;
+  font-weight: 700;
+}
+
+.form__msg_failed {
+  color: red;
+}
+
 @media screen and (max-width: 700px) {
   .form__container {
     margin: 15% 15%;

@@ -11,6 +11,7 @@ class Api {
 
   _fetchData() {
     if (this._jwt) this._options.headers.authorization = `Bearer ${this._jwt}`;
+    console.log(this._baseUrl + this._specificUrl, this._options);
     return fetch(this._baseUrl + this._specificUrl, this._options)
       .then((res) => {
         if (res.ok) return res.json();
