@@ -19,7 +19,7 @@
   color: #ccc7e1;
   font-size: 1.5rem;
   font-weight: 500;
-  margin: 1em auto 2em auto;
+  margin: 1em auto;
   text-align: center;
   width: 80%;
 }
@@ -41,7 +41,7 @@
   font-size: 1.5rem;
   width: 55%;
   font-weight: 400;
-  margin: 1em 0 2.8em 0;
+  margin: 1em 0 1.5em 0;
 }
 
 .hero__btn-container {
@@ -79,6 +79,12 @@
 .hero__text {
   color: #ffe3bc;
   font-size: 1.5rem;
+  text-align: center;
+}
+
+.hero__date {
+  color: #ffe3bc;
+  font-size: 1.3rem;
   text-align: center;
 }
 

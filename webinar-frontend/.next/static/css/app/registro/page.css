@@ -104,7 +104,7 @@
   color: #ccc7e1;
   font-size: 1.5rem;
   font-weight: 500;
-  margin: 1em auto 2em auto;
+  margin: 1em auto;
   text-align: center;
   width: 80%;
 }
@@ -126,7 +126,7 @@
   font-size: 1.5rem;
   width: 55%;
   font-weight: 400;
-  margin: 1em 0 2.8em 0;
+  margin: 1em 0 1.5em 0;
 }
 
 .hero__btn-container {
@@ -164,6 +164,12 @@
 .hero__text {
   color: #ffe3bc;
   font-size: 1.5rem;
+  text-align: center;
+}
+
+.hero__date {
+  color: #ffe3bc;
+  font-size: 1.3rem;
   text-align: center;
 }
 
@@ -230,60 +236,6 @@
 
   .hero__credits {
     display: none;
-  }
-}
-
-/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/register/register.css ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************/
-.register {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 65%;
-  margin: 2em auto 1em;
-}
-
-.register__text {
-  margin: 1em 0 0 0;
-  text-align: center;
-  color: #ffe3bc;
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.register__btn {
-  align-self: center;
-  margin: 1em auto;
-  padding: 1em 3em;
-  color: #071a55;
-  border: none;
-  border-radius: 7px;
-  background-color: #ffe3bc;
-  font-size: 20px;
-}
-
-@media screen and (max-width: 1079px) {
-  .register__btn {
-    font-size: 15px;
-  }
-
-  .register__text {
-    font-size: 15px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .register {
-    width: 80%;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .register {
-    width: 100%;
-    margin-top: 0;
   }
 }
 

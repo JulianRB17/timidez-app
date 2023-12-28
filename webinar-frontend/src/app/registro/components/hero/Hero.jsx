@@ -1,11 +1,47 @@
+'use client';
 import { motion } from 'framer-motion';
 import { Barlow } from 'next/font/google';
 import './hero.css';
-import Register from '@/components/register/Register';
+import { useEffect, useState } from 'react';
+import api from '@/utils/api';
+import { countdown } from '@/components/countdown/Countdown';
 
 const barlow = Barlow({ subsets: ['latin'], weight: '400' });
 
 export default function Hero() {
+  const [count, setCount] = useState('');
+  const [localDate, setLocalDate] = useState('');
+  const [timestamp, setTimestamp] = useState('');
+
+  useEffect(() => {
+    (async () => {
+      const data = await api.getDate();
+      if (data.localDate) {
+        setLocalDate(data.localDate);
+        setTimestamp(data.timestamp);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    if (timestamp) {
+      countdown(timestamp, setCount);
+    }
+  }, [timestamp, setCount]);
+
+  const Date = function () {
+    if (localDate) {
+      return (
+        <motion.div className="hero__date-container">
+          <p className={`hero__date  ${barlow.className}`}>{localDate}</p>
+          <p className={`hero__date  ${barlow.className}`}>
+            {count ? count : '¡Ya iniciamos!'}
+          </p>
+        </motion.div>
+      );
+    }
+  };
+
   return (
     <div className="hero__parallax">
       <div className="hero__container">
@@ -70,6 +106,7 @@ export default function Hero() {
             transition: { duration: 1 },
           }}
         >
+          <Date />
           <motion.a
             className="hero__btn"
             href="#form"
@@ -85,10 +122,10 @@ export default function Hero() {
           </p>
         </motion.div>
         <div className="hero__credits-container">
-        <p className="hero__credits">Fotografía: Carlos Alvar</p>
-        <p className="hero__credits">
-          Dirección escénica: Julián Reyes Botello
-        </p>
+          <p className="hero__credits">Fotografía: Carlos Alvar</p>
+          <p className="hero__credits">
+            Dirección escénica: Julián Reyes Botello
+          </p>
         </div>
       </div>
     </div>

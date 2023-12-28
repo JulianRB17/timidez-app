@@ -141,12 +141,14 @@ const getDate = function (req, res, next) {
     day: 'numeric',
   };
 
-  const date = new Date(process.env.WEBINAR_DATE).toLocaleDateString(
+  const localDate = new Date(process.env.WEBINAR_DATE).toLocaleDateString(
     'es-ES',
     options
   );
 
-  res.status(200).json({ date });
+  const timestamp = new Date(process.env.WEBINAR_DATE).getTime();
+
+  res.status(200).json({ timestamp, localDate });
 };
 
 const getNumbers = catchAsync(async function (req, res, next) {
