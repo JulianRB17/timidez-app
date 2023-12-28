@@ -60,6 +60,7 @@ export default function Login() {
       ...formValues,
       [id]: value,
     });
+    console.log(formValues);
     setValidForm(target.form.checkValidity());
   };
 
@@ -67,11 +68,11 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      await handleLogin();
       setFormValues({
-        name: '',
+        email: '',
         password: '',
       });
+      await handleLogin();
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -93,6 +94,8 @@ export default function Login() {
               onChange={handleChange}
               maxLength={30}
               required
+              name="email"
+              value={formValues.email}
             />
           </div>
           <div className="login__element">
@@ -105,6 +108,7 @@ export default function Login() {
               maxLength={25}
               minLength={3}
               required
+              value={formValues.password}
             />
           </div>
           <button

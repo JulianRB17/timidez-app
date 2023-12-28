@@ -46,6 +46,10 @@ export default function Form() {
     } catch (error) {
       setLoading(false);
       console.error(error);
+      setFormValues({
+        username: '',
+        email: '',
+      });
       alert('Ahh, algo salió malo, por favor vuelve a intentarlo.');
     }
   };
@@ -111,6 +115,7 @@ export default function Form() {
             onChange={handleChange}
             maxLength={11}
             required
+            value={formValues.username}
           />
           <p className="form__error-msg">Escribe tu nombre correctamente.</p>
           <label htmlFor="email" className="form__label">
@@ -125,6 +130,7 @@ export default function Form() {
             onChange={handleChange}
             autoComplete="on"
             required
+            value={formValues.email}
           />
           <p className="form__error-msg">Escribe un email válido.</p>
         </div>
