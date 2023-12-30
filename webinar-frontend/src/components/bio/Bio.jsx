@@ -49,9 +49,13 @@ export default function Bio() {
           Cátedra Ingmar Bergman de la UNAM. También estudié un tiempo, por un
           intercambio académico, en la Universidad Nacional de Córdoba,
           Argentina, en la Licenciatura de Teatro. Esas son mis credenciales
-          académicas, llevo haciendo teatro de manera profesional desde 2012,
-          así que tengo, a parte del conocimiento académico, una trayectoria
-          importante en la escena mexicana.
+          académicas, llevo haciendo teatro de manera profesional desde 2012, he
+          dirigido, producido y actuado en muchas obras. También he actuado en
+          cine aunque no me enoque tanto en ese medio. Actualmente tengo en
+          temporada una obra de ciencia ficción que produje junto a mi compañía
+          MoS y de la cual también soy el director escénico. Así que tengo, a
+          parte del conocimiento académico, una trayectoria importante en la
+          escena mexicana. Pero eso creo que no es lo más importante.
         </motion.p>
         <motion.h3
           className="bio__subtitle"
@@ -79,6 +83,27 @@ export default function Bio() {
           la mía que odiaba. Tomé esa decisión hace 14 años.{' '}
           <span className="bio__text-accent">
             HOY MI VIDA ES TOTALMENTE DIFERENTE.
+          </span>
+          Soy una persona tímida, pero a la vez soy extrovertido (eso es
+          posible, sí). Mi profesión me ha dado herramientas para poder, a pesar
+          del miedo exponerme frente a cientos de personas. El constante
+          entrenamiento para llegar a lograrlo de la mejor manera posible ha
+          permitido que, aún con miedo, la timidez no rija mi vida.
+        </motion.p>
+        <motion.p
+          className="bio__paragraph"
+          initial={{ x: '-0.5rem' }}
+          whileInView={{ x: 0, transition: { duration: 1 } }}
+        >
+          Sabiendo que la razón por la que actrices y actores somos gente que
+          puede dialogar con nuestra timidez por la profesión que tenemos, por
+          las herramientas que se nos otorgan y las experiencias que vivimos, y
+          sabiendo que si yo no me hubiera enamorado de la teatralidad mi vida
+          seguramente estaría regida por mi timidez, decidí crear este curso
+          <span className="bio__text-accent">
+            {' '}
+            para ayudar a otras personas como yo que no tienen idea de las
+            posibilidades reales que tienen para dialogar con su timidez.{' '}
           </span>
         </motion.p>
       </div>

@@ -255,14 +255,14 @@ const registrationHtmlEmail = (user, date) => {
         <div class="about__element">
           <h2 class="about__number">1</h2>
           <h3 class="about__secret">
-            Existen actores o actrices tímidas, no somos gente que nace siendo
-            el centro de atención.
+          Existen actores y actrices tímidas, no nacemos siendo el centro de
+          atención.
           </h3>
         </div>
         <div class="about__element">
           <h2 class="about__number">2</h2>
           <h3 class="about__secret">
-            ¿Por qué los silencios pueden ser incómodos y cómo evitarlos?
+          Silencios incómodos: ¿Qué son y cómo evitarlos?
           </h3>
         </div>
         <div class="about__element">
@@ -519,7 +519,7 @@ const reminder48HtmlEmail = (user, date) => {
 
 const reminder24HtmlEmail = (user, date) => {
   const { username, _id } = user;
-  
+
   const options = {
     weekday: 'long',
     year: 'numeric',

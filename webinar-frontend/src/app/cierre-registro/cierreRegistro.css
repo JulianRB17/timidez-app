@@ -54,9 +54,8 @@
 .cierre-registro__recordatorio-text {
   color: #ffe3bc;
   text-align: center;
-  margin: 0;
+  margin: 2em 0 0 0;
   font-size: 1.3rem;
-  margin-bottom: 1em;
 }
 
 .cierre-registro__recordatorio-text_lg {
@@ -92,14 +91,17 @@
 .cierre-registro__btn {
   background-color: #e17900;
   padding: 0.5em 2em;
-  font-size: 1.5rem;
   border-radius: 0.5em;
-  margin: 1rem 0 2rem;
+  margin: 1em 0;
   width: 60%;
   cursor: pointer;
+  text-align: center;
+}
+
+.cierre-registro__link {
+  font-size: 1.5rem;
   color: #ffe3bc;
   text-decoration: none;
-  text-align: center;
   font-weight: 500;
 }
 
@@ -138,8 +140,11 @@
   }
 
   .cierre-registro__btn {
-    font-size: 1rem;
     width: 100%;
+  }
+
+  .cierre-registro__link {
+    font-size: 1rem;
   }
 
   .cierre-registro__credits {

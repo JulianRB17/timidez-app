@@ -60,7 +60,6 @@ export default function Login() {
       ...formValues,
       [id]: value,
     });
-    console.log(formValues);
     setValidForm(target.form.checkValidity());
   };
 
@@ -68,15 +67,19 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     try {
+      await handleLogin();
       setFormValues({
         email: '',
         password: '',
       });
-      await handleLogin();
       setLoading(false);
     } catch (error) {
       setLoading(false);
       console.error(error);
+      setFormValues({
+        email: '',
+        password: '',
+      });
       alert('Ahh, algo salió malo, por favor vuelve a intentarlo.');
     }
   };

@@ -18,8 +18,9 @@ export default function HeroVentas() {
         }}
       >
         ¿Te frustra o te enoja no haber logrado relacionarte con otras personas
-        de forma natural? ¿Quisieras ser una persona más espontánea?¿Sientes que
-        te estás perdiendo momentos en la vida por tener pena?
+        de forma natural? ¿Quisieras ser una persona más espontánea? ¿Sientes
+        que te estás perdiendo momentos en la vida por tener pena? ¿Quisieras
+        desenvolverte mejor frente a otras personas?
       </motion.h2>
 
       <motion.h1
@@ -27,9 +28,9 @@ export default function HeroVentas() {
         initial={{ x: '-1em', opacity: 0 }}
         whileInView={{ x: 0, opacity: 1, transition: { duration: 1 } }}
       >
-        Ser sociable es una habilidad que se puede desarrollar, descubre las
-        técnicas que llevan perfeccionándose 114 años para no sentir miedo al
-        juicio ajeno y acciónalas en un entorno seguro y de confianza.
+        Las habilidades sociales se puede desarrollar, descubre las técnicas que
+        llevan perfeccionándose 114 años para disminuir el miedo al juicio ajeno
+        y acciónalas en un entorno seguro y de confianza.
       </motion.h1>
       <motion.div
         initial={{ opacity: 0, x: '-1rem' }}

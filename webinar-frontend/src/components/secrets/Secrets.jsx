@@ -24,7 +24,8 @@ export default function Secrets() {
             1
           </motion.h2>
           <div className="secrets__text">
-            Cómo herramientas teatrales te pueden ayudar en el día a día.
+            Existen actores y actrices tímidas, no nacemos siendo el centro de
+            atención.
           </div>
         </div>
         <div className="secrets__element">
@@ -38,8 +39,7 @@ export default function Secrets() {
             2
           </motion.h2>
           <div className="secrets__text">
-            Jugando con el error: ¿Cómo le hacen actrices y actores para no
-            tener miedo a equivocarse frente a tanta gente?
+            Silencios incómodos: ¿Qué son y cómo evitarlos?
           </div>
         </div>
         <div className="secrets__element">
@@ -53,7 +53,9 @@ export default function Secrets() {
             3
           </motion.h2>
           <div className="secrets__text">
-            ¿Como hacerle para no sentirme juzgada/o y no saber qué decir?
+            Reconciliarte con tu timidez no quiere decir volverte una persona
+            ruidosa o dejar de ser tú, significa que ésta no tome el control de
+            tu vida.
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Footer from '@/components/footer/Footer';
 import './repeticion.css';
+import  Link  from 'next/link';
 
 export default function Page() {
   return (
@@ -72,7 +73,7 @@ export default function Page() {
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.2 }}
             >
-              Haz click aquí
+              <Link href="/ventas-l" className="repeticion__link">Haz click aquí</Link>
             </motion.button>
           </div>
         </div>

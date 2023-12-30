@@ -47,7 +47,8 @@ export default function Page() {
             de tu vida.
             <span className="cierre-venta__subtitle_accent">
               {' '}
-              Es hora de recuperar la fuerza de
+              Es momento de tomar las riendas, de empezar a vivir experiencias
+              nuevas en un espacio de seguridad.
             </span>
           </motion.p>
         </div>
@@ -61,7 +62,7 @@ export default function Page() {
             >
               <h2 className="cierre-venta__recordatorio-text cierre-venta__recordatorio-text_lg">
                 Se te ha mandado un mail con toda la información importante.
-                Recuerda que las sesiones de este curso serán los días
+                Recuerda que las sesiones de este curso online serán los días
               </h2>
               <p className="cierre-venta__recordatorio-text cierre-venta__recordatorio-text_dates">
                 Lunes y miércoles de 18:00 a 20:00 hrs. (horario CDMX) del 8 de
@@ -90,7 +91,8 @@ export default function Page() {
                 leer las dudas de otras personas y, finalmente es un espacio que
                 aún terminado el taller podrá seguirse ocupando y compartiéndose
                 ahí material, inquietudes, dudas, miedos, anécdotas. Es el
-                círculo virtual alrededor del cual nos sentaremos a hablar.
+                círculo virtual alrededor del cual nos sentaremos a hablar, es
+                donde haremos compañía.
               </p>
               <p className="cierre-venta__recordatorio-text cierre-venta__recordatorio-text_lg">
                 ¡Nos vemos muy pronto!

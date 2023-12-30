@@ -1,0 +1,950 @@
+/*!**********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/garantia/garantia.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************/
+.garantia {
+    padding: 0 5% 5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffe3bc;
+    color: #071a55;
+  }
+  
+  .garantia__title {
+    align-self: center;
+    position: relative;
+    margin: 0;
+    padding: 0.5em 1em;
+    font-size: 2rem;
+    background-color: #ffe3bc;
+    border: #e17900 2px solid;
+    top: -1em;
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  .garantia__container {
+    display: flex;
+  }
+  
+  .garantia__img {
+    width: 30%;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 2em;
+  }
+  
+  .garantia__text {
+    font-size: 1.5rem;
+    margin: auto 0;
+    text-align: justify;
+  }
+  
+  .garantia__text_accent {
+    color: #e17900;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .garantia__container {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  
+    .garantia__title {
+      font-size: 1.5rem;
+    }
+  
+    .garantia__text {
+      font-size: 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .garantia__img {
+      width: 50%;
+    }
+  }
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/heroVentas/heroVentas.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
+.hero {
+  background-image: url(/_next/static/media/fondo-ventas.c4640f86.webp);
+  min-height: 100vh;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__hook-container {
+  position: relative;
+  margin-top: 2%;
+}
+
+.hero__hook {
+  color: #ccc7e1;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 3% auto 1em;
+  text-align: center;
+  width: 90%;
+  position: relative;
+  z-index: 2;
+  text-shadow: #000821 1px 1px;
+}
+
+.hero__title {
+  font-size: 2rem;
+  color: #e17900;
+  margin: 2em 0 0;
+  width: 60%;
+  font-weight: 600;
+}
+
+.hero__logo {
+  height: auto;
+  width: 50%;
+  border-radius: 10px;
+  margin-top: 5em;
+}
+
+.hero__credits {
+  margin: 0;
+  align-self: flex-end;
+  color: #ffe3bc;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 900px) {
+  .hero__title {
+    width: 80%;
+  }
+
+  .hero__logo {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .hero__hook {
+    font-size: 1rem;
+  }
+
+  .hero__title {
+    text-align: center;
+    width: 90%;
+    margin: 2em auto 0;
+    font-size: 1.5rem;
+  }
+
+  .hero__logo {
+    width: 90%;
+    margin: 5em auto 1em;
+  }
+
+  .hero__container {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hero__hook {
+    font-size: 0.8rem;
+  }
+
+  .hero__title {
+    font-size: 1.2rem;
+  }
+
+  .hero__credits {
+    display: none;
+  }
+}
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/intro/intro.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+.intro-ventas {
+  display: flex;
+  flex-direction: column;
+  padding: 2% 5% 7rem;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 8, 33, 1) 0%,
+    rgba(7, 26, 85, 1) 90%
+  );
+}
+
+.intro-ventas__title {
+  color: #ffe3bc;
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 2% 0;
+}
+
+.intro-ventas__list {
+  width: 80%;
+}
+
+.intro-ventas__container {
+  display: flex;
+}
+
+.intro-ventas__text-container {
+  width: 50%;
+  padding: 0 3%;
+}
+
+.intro-ventas__text {
+  font-size: 1.2rem;
+  text-align: justify;
+  margin: 1em 0;
+}
+
+.intro-ventas__img {
+  width: 90%;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+@media screen and (max-width: 900px) {
+  .intro-ventas__container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .intro-ventas__text-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .intro-ventas__title {
+    font-size: 1.3rem;
+  }
+
+  .intro-ventas__text {
+    font-size: 1rem;
+  }
+}
+
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/bio/bio.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+.bio {
+  background-image: url('/fondoBio.webp');
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  color: #000821;
+  display: flex;
+  position: relative;
+}
+
+.bio__text-container {
+  margin: 7%;
+}
+
+.bio__title {
+  font-size: 2rem;
+  margin: 2% auto 2%;
+}
+
+.bio__subtitle {
+  color: #071a55;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.bio__paragraph {
+  text-align: justify;
+  font-size: 1rem;
+}
+
+.bio__text-accent {
+  font-size: 1.2rem;
+  color: #e17900;
+  font-weight: 700;
+}
+
+.bio__img {
+  position: -webkit-sticky;
+  position: sticky;
+  width: 35%;
+  height: 35%;
+  top: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  .bio {
+    flex-direction: column-reverse;
+  }
+
+  .bio__img {
+    position: relative;
+    width: 40%;
+    height: auto;
+    align-self: flex-end;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .bio__title {
+    font-size: 1.2rem;
+  }
+
+  .bio__subtitle {
+    font-size: 1rem;
+  }
+
+  .bio__paragraph {
+    font-size: 0.9rem;
+  }
+
+  .bio__text-accent {
+    font-size: 0.9rem;
+  }
+}
+
+/*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/justificacion/justificacion.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************/
+.justificacion {
+    background-color: #ccc7e1;
+    color: #000821;
+    display: flex;
+    flex-direction: column;
+    padding: 2% 5% 5%;
+  }
+  
+  .justificacion__title {
+    margin: 0 auto;
+    padding: 1em;
+    font-size: 1.6rem;
+    position: relative;
+    top: -3em;
+    background-color: #ccc7e1;
+    width: 65%;
+    text-align: center;
+    border: white 3px solid;
+    font-weight: 500;
+  }
+  
+  .justificacion__subtitle {
+    margin: 0 0 1em;
+    font-size: 1.5rem;
+  }
+  
+  .justificacion__list {
+    display: flex;
+    flex-direction: column;
+    border: white 3px solid;
+    padding: 1em;
+  }
+  
+  .justificacion__list-element {
+    margin: 1em 0 1em 1em;
+    font-size: 1.3rem;
+    color: #4c73f1;
+  }
+  
+  .justificacion__warning {
+    font-size: 1.3rem;
+    color: #e17900;
+  }
+  
+  @media screen and (max-width: 800px) {
+    .justificacion__title {
+      font-size: 1.3rem;
+    }
+  
+    .justificacion__subtitle {
+      font-size: 1.3rem;
+    }
+  
+    .justificacion__list-element {
+      font-size: 1rem;
+    }
+  
+    .justificacion__warning {
+      font-size: 1rem;
+    }
+  }
+  
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/venta/venta.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+.venta {
+    padding: 5%;
+    background-color: #ffe3bc;
+    color: #071a55;
+    border-bottom: 10px solid #e17900;
+  }
+  
+  .venta__title {
+    margin: 0;
+    color: #ffe3bc;
+    font-weight: 500;
+    font-size: 2rem;
+  }
+  
+  .venta__container {
+    margin: 2em 0;
+    /* border: 3px solid #000821; */
+    box-shadow: 1px 1px 5px #000821;
+    padding: 1em;
+    background-color: #071a55;
+    color: #ccc7e1;
+    border-radius: 5px;
+  }
+  
+  .venta__text {
+    font-size: 1.2rem;
+    margin: 1em;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .venta__title {
+      font-size: 1.5rem;
+    }
+  
+    .venta__text {
+      font-size: 0.9rem;
+    }
+  }
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/callToActionSm/callToActionSm.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+.call-to-action-sm {
+  display: flex;
+  flex-direction: column;
+  background-color: #000821;
+  padding: 8%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.call-to-action-sm__btn {
+  background-color: #e17900;
+  padding: 0.5em 2em;
+  font-size: 2rem;
+  border-radius: 0.5em;
+  color: #ffe3bc;
+  box-shadow: #ffe3bc 1px 1px, #ffe3bc -1px -1px, #ffe3bc 1px -1px,
+    #ffe3bc -1px 1px;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 1rem 0 5rem;
+  cursor: pointer;
+}
+
+.call-to-action-sm__logo {
+  height: auto;
+  width: 70%;
+}
+
+@media screen and (max-width: 600px) {
+  .call-to-action-sm__btn {
+    font-size: 1.5rem;
+    padding: 0.3em 1em;
+  }
+  .call-to-action-sm__logo {
+    width: 90%;
+  }
+}
+
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/bonos/bonos.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+.bonos {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  padding-top: 0;
+  border-bottom: 10px solid #e17900;
+  background-color: #ccc7e1;
+  color: #000821;
+}
+
+.bonos__title {
+  margin: 0 auto;
+  font-size: 2.5rem;
+  font-weight: 500;
+  position: relative;
+  top: -1.2em;
+  background-color: #ccc7e1;
+  border: #ffe3bc 2px solid;
+  padding: 0.7em;
+  text-align: center;
+}
+
+.bonos__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bonos__element {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  align-items: center;
+}
+
+.bonos__number {
+  font-size: 10rem;
+  margin: 0.1em;
+  color: #ccc7e1;
+  text-shadow: 0 0 0.1em #071a55;
+}
+
+.bonos__text {
+  font-size: 1.5rem;
+  margin: 0 0 2em 0;
+  text-align: center;
+}
+
+.bonos__text_general {
+  text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+  .bonos__title {
+    font-size: 1.5rem;
+  }
+
+  .bonos__text {
+    font-size: 1rem;
+  }
+
+  .bonos__container {
+    flex-direction: column;
+  }
+
+  .bonos__element {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/precio/precio.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+.precio {
+  padding: 5%;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  color: #ffe3bc;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 8, 33, 1) 25%,
+    rgba(76, 115, 241, 1) 100%
+  );
+}
+
+.precio__title {
+  align-self: center;
+  margin: 0;
+  padding: 0.5em;
+  font-size: 2rem;
+  position: relative;
+  top: -1.2em;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 8, 33, 1) 25%,
+    rgba(76, 115, 241, 1) 100%
+  );
+  border: #e17900 2px solid;
+  font-weight: 500;
+  text-align: center;
+}
+
+.precio__text {
+  font-size: 1.5rem;
+  margin: 0;
+  text-shadow: #000821 1px 1px 0;
+  text-align: center;
+}
+
+.precio__text_accent {
+  font-size: 3rem;
+}
+
+.precio__tabla {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding: 3em;
+}
+
+.precio__nombre {
+  width: 80%;
+  border-right: 2px solid #ccc7e1;
+  margin: 0;
+  padding: 0.5em 0;
+}
+
+.precio__numero {
+  padding: 0.5em 1em;
+  margin: 0;
+  width: 15%;
+  align-self: center;
+}
+
+.precio__element {
+  display: flex;
+  font-size: 1.3rem;
+  width: 100%;
+}
+
+.precio__img-container {
+  display: flex;
+  padding: 3em;
+}
+
+.precio__img {
+  width: 25%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.precio__numero_total {
+  border-top: 2px solid #ccc7e1;
+  padding-top: 1em;
+}
+
+.precio__nombre_total {
+  border-top: 2px solid #ccc7e1;
+  padding-top: 1em;
+}
+
+.precio__btn {
+  color: #ffe3bc;
+  background-color: #e17900;
+  font-size: 2.5rem;
+  text-decoration: none;
+  margin: 2em auto;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .precio__title {
+    font-size: 1.5rem;
+  }
+
+  .precio__text {
+    font-size: 1rem;
+  }
+
+  .precio__text_accent {
+    font-size: 2rem;
+  }
+
+  .precio__img {
+    width: 40%;
+  }
+
+  .precio__btn {
+    font-size: 1.5rem;
+  }
+
+  .precio__nombre {
+    font-size: 0.8rem;
+  }
+
+  .precio__numero {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .precio__img {
+    width: 80%;
+  }
+
+  .precio__img-container {
+    padding: 3em 0;
+  }
+}
+
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/faq/faq.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/faqs/faqs.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+.faqs {
+  padding: 5%;
+  padding-top: 0;
+  background-color: #000821;
+}
+
+.faqs__title {
+  font-size: 2rem;
+  text-align: center;
+  margin: 0 auto;
+  color: #ffe3bc;
+  font-weight: 500;
+  border: 1px solid white;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.5em 1em;
+  position: relative;
+  top: -1em;
+  background-color: #000821;
+}
+
+.faq {
+  background-color: #ccc7e1;
+  padding: 0.5em 0.7em;
+  margin: 1em 0;
+  border-radius: 5px;
+  border: #ffe3bc solid 2px;
+}
+
+.faq__question {
+  color: #e17900;
+  font-weight: 600;
+}
+
+.faq__answer {
+  color: #000821;
+}
+
+@media screen and (max-width: 700px) {
+  .faqs__title {
+    font-size: 1.5rem;
+  }
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/callToAction/callToAction.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************/
+.call-to-action {
+  display: flex;
+  background-image: url(/_next/static/media/fondoForm.4a59f8a7.webp);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 5%;
+  z-index: -2;
+}
+
+.call-to-action__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 40%;
+  align-items: center;
+  margin-left: 1em;
+  padding: 1% 2%;
+  position: relative;
+}
+
+.call-to-action__title {
+  font-size: 2rem;
+  color: #4c73f1;
+  font-weight: 500;
+  font-weight: 500;
+  text-align: center;
+}
+
+.call-to-action__element {
+  font-size: 1.2rem;
+}
+
+.call-to-action__text {
+  font-size: 2rem;
+  color: #ffe3bc;
+}
+
+.call-to-action__btn {
+  background-color: #e17900;
+  padding: 0.5em 2em;
+  font-size: 2.5rem;
+  border-radius: 0.5em;
+  color: #ffe3bc;
+  box-shadow: #ffe3bc 1px 1px, #ffe3bc -1px -1px, #ffe3bc 1px -1px,
+    #ffe3bc -1px 1px;
+  cursor: pointer;
+}
+
+.call-to-action__credits-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0 0;
+  align-self: flex-end;
+  color: #ffe3bc;
+  position: absolute;
+  bottom: 0;
+}
+
+.call-to-action__credits {
+  margin: 0;
+}
+
+.call-to-action__img {
+  height: auto;
+  width: 90%;
+  margin-bottom: 3em;
+}
+
+@media screen and (max-width: 900px) {
+  .call-to-action__btn {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .call-to-action {
+    flex-direction: column;
+  }
+
+  .call-to-action__container {
+    margin: 0;
+  }
+
+  .call-to-action__btn {
+    margin-bottom: 2em;
+  }
+
+  .call-to-action__credits {
+    font-size: 0.8rem;
+    text-align: end;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .call-to-action__title {
+    font-size: 1.5rem;
+  }
+
+  .call-to-action__element {
+    font-size: 1rem;
+  }
+
+  .call-to-action__text {
+    font-size: 1.5rem;
+  }
+
+  .call-to-action__btn {
+    font-size: 1.5rem;
+    padding: 0.5em 1em;
+    margin-bottom: 4em;
+  }
+}
+
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/footer/footer.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+.footer {
+  background-color: #000821;
+  min-height: 5em;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4em;
+  align-items: center;
+}
+
+.footer__credits {
+  text-align: center;
+  margin: 0;
+}
+
+.footer__logo {
+  height: -moz-fit-content;
+  height: fit-content;
+  min-width: 10em;
+  width: 25%;
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    flex-direction: column;
+    padding: 0 1 em;
+  }
+  .footer__logo {
+    margin: 1em;
+    width: 80%;
+  }
+
+  .footer__credits {
+    font-size: 0.8rem;
+    padding: 1em;
+  }
+}
+
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/components/info/info.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+.info {
+  padding: 5%;
+  background: linear-gradient(
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 8, 33, 1) 50%,
+    rgba(7, 26, 85, 1) 100%
+  );
+  border-bottom: 10px solid #ffe3bc;
+  padding-bottom: 7%;
+}
+
+.info__container {
+  max-width: 1300px;
+  margin: 0 auto 6rem;
+  border: 2px white solid;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.info__title {
+  font-size: 2rem;
+  color: #ffe3bc;
+  text-align: center;
+  font-weight: 500;
+}
+
+.info__text {
+  font-size: 1.2rem;
+  text-align: justify;
+  line-height: 1.5rem;
+  margin: 0;
+}
+
+.info__subtitle {
+  font-size: 1.5rem;
+  color: #4c73f1;
+  font-weight: 500;
+  margin: 1em 0 0.5em;
+}
+
+.info__img {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+  .info__title {
+    font-size: 1.5rem;
+  }
+
+  .info__text {
+    font-size: 1rem;
+  }
+
+  .info__subtitle {
+    font-size: 1.1rem;
+  }
+}
+

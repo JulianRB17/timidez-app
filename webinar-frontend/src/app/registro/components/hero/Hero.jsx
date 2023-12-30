@@ -1,10 +1,11 @@
 'use client';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Barlow } from 'next/font/google';
-import './hero.css';
-import { useEffect, useState } from 'react';
 import api from '@/utils/api';
-import { countdown } from '@/components/countdown/Countdown';
+import { countdown } from '@/utils/countdown';
+import './hero.css';
+
 
 const barlow = Barlow({ subsets: ['latin'], weight: '400' });
 
