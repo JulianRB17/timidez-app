@@ -19,9 +19,9 @@ export default function Venta() {
         <h2 className="venta__title">Este programa es para ti si...</h2>
 
         <li className="venta__text">
-          Te sientes encerrada/o en una burbuja de soledad y no sabes cómo salir
-          de ella.
+          Te aterra llegar a un lugar con nuevas personas.
         </li>
+        <li className="venta__text"></li>
         <li className="venta__text">
           Crees que has dejado pasar experiencias increíbles por tu timidez y no
           quieres que toda tu vida sea así: viendo desde lejos lo que deseas.

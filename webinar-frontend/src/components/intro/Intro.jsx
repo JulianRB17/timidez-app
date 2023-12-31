@@ -21,17 +21,20 @@ export default function IntroVentas() {
         }}
       >
         <li className="intro-ventas__text">
-          Tienes miedo de ser una persona tímida toda la vida, por lo que
-          sobrepiensas y al final no hablas para no hacer el rídiculo…
+          Te sientes una persona incómoda, te dicen que eres demasiado
+          silenciosa/o pero cuando hablas es peor.
         </li>
         <li className="intro-ventas__text">
-          Estás cansada/o de ser una persona callada, de que se te presenta la
-          oportunidad de conocer gente pero no lograr nada por no saber qué
-          decir.
+          Te han dicho que seas tú misma/o, que preguntes más, que escuches,
+          pero sabes que eso en ti no funciona: te sientes en un interrogatorio.
         </li>
         <li className="intro-ventas__text">
-          ¿Estás harta/o de los silencios incómodos? ¿Sientes que eres la causa
-          de estos?
+          Se supone que tienes que actuar de tal manera pero te da miedo
+          hacerlo, exponerte.
+        </li>
+        <li className="intro-ventas__text">
+          Te sientes incapaz de relacionarte por tu timidez, es como si fuera
+          una maldición que te condena a la soledad.
         </li>
       </motion.ul>
       <motion.h3
@@ -53,7 +56,7 @@ export default function IntroVentas() {
           <p className="intro-ventas__text">
             ¿Alguna vez has escuchado de la pirámide de{' '}
             <span className="intro-ventas__accent">Maslow</span>? Maslow fue el
-            padre de la psicología humanista, en los 40s publicó un artículo que
+            padre de la psicología humanista; en los 40s publicó un artículo que
             cambiaría la forma de ver distintas ramas de la psicología e incluso
             de otras áreas del conocimiento como la economía. En este artículo,
             Maslow desarrolla la siguiente pirámide:

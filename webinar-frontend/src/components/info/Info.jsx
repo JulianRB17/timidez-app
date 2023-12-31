@@ -82,7 +82,7 @@ export default function Info() {
           vida al teatro: quería transformar mi realidad, que no fuera como
           había sido hasta ese momento. Cada quien puede hacer magia como más le
           plazca, desarrollar la creatividad para darle magia a la vida,
-          transformar la realidad es uno de los ejes de este curso.{' '}
+          transformar la realidad es uno de los ejes de este curso.
         </motion.p>
         <motion.h3
           className="info__subtitle"
@@ -180,7 +180,7 @@ export default function Info() {
           initial={{ opacity: 0.5, x: '-0.5rem' }}
           whileInView={{ opacity: 1, x: 0, transition: { duration: 1 } }}
         >
-          El curso está dividido en 10 sesiones. En las primeras tenderemos más
+          El curso está dividido en 11 sesiones. En las primeras tenderemos más
           a trabajar sobre qué es la timidez, cómo nos afecta, etc. Después
           jugaremos un poco con la actuación y, finalmente, después de un
           proceso bien desarrollado, cuidado y articulado, cada quién tendrá la
@@ -234,7 +234,7 @@ export default function Info() {
               El mundo está constituido por una gran cantidad de personas
               tímidaz, sin embargo no está hecho para éstas. Durante este módulo
               aprenderás cómo darle lugar a tu voz en un mundo que está
-              estructurado para acallarla.{' '}
+              estructurado para acallarla.
             </p>
             <p className="info__text">
               Empezaremos con la escritura, abrazaremos las ventajas de la
@@ -283,12 +283,11 @@ export default function Info() {
               psicología, parte de la filosofía y el arte se dedican a entender
               ese mundo que se encuentra construido dentro de cada persona. A
               ese universo individual le llamamos mundo interno. A través de
-              aprender a relacionarte con él a través de la imaginación es
-              posible empoderarte en el mundo real. La inteligencia
-              intrapersonal -la capacidad de profundizar el vínculo que tiene
-              cada persona consigo misma- e interpersonal -la capacidad de
-              profundizar y generar vínculos con otras personas- están
-              profundamente relacionadas.
+              aprender a relacionarte con él usando la imaginación es posible
+              empoderarte en el mundo real. La inteligencia intrapersonal -la
+              capacidad de profundizar el vínculo que tiene cada persona consigo
+              misma- e interpersonal -la capacidad de profundizar y generar
+              vínculos con otras personas- están profundamente relacionadas.
             </p>
             <p className="info__text">
               Durante este módulo aprenderás herramientas para conectar con tu
@@ -360,7 +359,7 @@ export default function Info() {
               cuando esto sucede, no es tan fácil como aparenta el apropiarse de
               esas palabras. Pensemos en un contexto no actoral: una
               conferencia, por ejemplo, ¿quién no ha estado en una que es
-              profpundamente aburrida porque quien está dándola sólo está
+              profundamente aburrida porque quien está dándola sólo está
               leyendo?
             </p>
             <p className="info__text">

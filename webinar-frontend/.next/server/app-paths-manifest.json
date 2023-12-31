@@ -1,7 +1,3 @@
 {
-  "/cierre-registro/page": "app/cierre-registro/page.js",
-  "/cierre-venta/page": "app/cierre-venta/page.js",
-  "/registro/page": "app/registro/page.js",
-  "/repeticion/page": "app/repeticion/page.js",
   "/ventas-l/page": "app/ventas-l/page.js"
 }

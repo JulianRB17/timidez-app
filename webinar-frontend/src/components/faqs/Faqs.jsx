@@ -59,7 +59,7 @@ export default function Faqs() {
     {
       question: '¿Es seguro pagar en línea?',
       answer:
-        '¡Sí! Todos los pagos que procesamos a nivel nacional e internacional suceden a través de la plataforma de Hotmart donde tus datos y transacciones están totalmente seguras. Hotmart es una plataforma que trabaja con miles de cursos online y desde hace bastante tiempo, así que puedes confiar en su proceso de pago.',
+        '¡Sí! Todos los pagos que procesamos a nivel nacional e internacional suceden a través de la plataforma Hotmart donde tus datos y transacciones están totalmente seguras. Hotmart es una plataforma que trabaja con miles de cursos online y desde hace bastante tiempo, así que puedes confiar en su proceso de pago.',
     },
     {
       question: '¿Este curso es adecuado para todas las edades?',

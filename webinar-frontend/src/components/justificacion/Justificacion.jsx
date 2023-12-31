@@ -39,29 +39,6 @@ export default function Justificacion() {
             transition: { duration: 1 },
           }}
         >
-          Porque lo he visto: aunque haya actrices y actores que son gente
-          introvertida si quieren relacionarse no temen hacerlo.
-        </motion.li>
-        <motion.li
-          className="justificacion__list-element"
-          initial={{ x: '-20px' }}
-          whileInView={{
-            x: 0,
-            transition: { duration: 1 },
-          }}
-        >
-          La actuación brinda un espacio seguro donde podemos accionar. Pasa,
-          por ejemplo en terapia, que descubres lo que necesitas cambiar, pero
-          dar ese primer paso, esa primer acción da pánico allá afuera.{' '}
-        </motion.li>
-        <motion.li
-          className="justificacion__list-element"
-          initial={{ x: '-20px' }}
-          whileInView={{
-            x: 0,
-            transition: { duration: 1 },
-          }}
-        >
           Actuar no es mentir: parte de mí sabe que estoy actuando, pero a la
           otra parte le están pasando de verdad esas cosas. Tener muchas
           experiencias en un espacio seguro es como usar rueditas en la
@@ -75,9 +52,35 @@ export default function Justificacion() {
             transition: { duration: 1 },
           }}
         >
-          Actuar implica aprender a empatizar en la práctica, también entender
-          como personas muy diferentes a mí se relacionan porque entiendo cómo
-          mi personaje se relaciona con otros.
+          Porque lo he visto: aunque haya actrices y actores que son gente
+          tímida o introvertida si quieren relacionarse no temen hacerlo.
+        </motion.li>
+        <motion.li
+          className="justificacion__list-element"
+          initial={{ x: '-20px' }}
+          whileInView={{
+            x: 0,
+            transition: { duration: 1 },
+          }}
+        >
+          La actuación brinda un espacio seguro donde podemos accionar. Pasa,
+          por ejemplo en terapia, que descubres lo que necesitas cambiar en tu
+          día a día, pero dar ese primer paso, esa primer acción da pánico allá
+          afuera.{' '}
+        </motion.li>
+        <motion.li
+          className="justificacion__list-element"
+          initial={{ x: '-20px' }}
+          whileInView={{
+            x: 0,
+            transition: { duration: 1 },
+          }}
+        >
+          Actuar implica aprender a empatizar en la práctica: entender como
+          personas muy diferentes a mí se relacionan porque entiendo cómo mi
+          personaje se relaciona con otros. Entonces puedo pasar a mi piel el
+          entender cómo relacionarme con otras personas a partir de esa
+          experiencia.
         </motion.li>
         <motion.li
           className="justificacion__list-element"
