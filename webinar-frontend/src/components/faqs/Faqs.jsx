@@ -63,14 +63,13 @@ export default function Faqs() {
     },
     {
       question: '¿Este curso es adecuado para todas las edades?',
-      answer:
-        '¡Sí! Cualquier persona puede tomarlo, siempre y cuando tengan acceso a un dispositivo con internet y con Zoom en éste.',
+      answer: 'El curso está diseñado para adolescentes y gente adulta.',
     },
     {
       question:
-        '¿Por qué dices que son técnicas que llevan perfeccionándose 114 años?',
+        '¿Por qué dices que son técnicas que llevan perfeccionándose 115 años?',
       answer:
-        'El padre de la actuación contemporanea fue un ruso llamado Konstantin Stanislavski; uno de sus libros más importantes "El trabajo del actor sobre sí mismo" fue escrito en 1909, hace 114 años. La forma en la que Stanislavski pensó la actoralidad revolucionó para siempre el trabajo de actrices y actores en un set o un escenario. Antes de él actuar era fingir, Stanislavski empieza a pensar en cómo la psique de una actriz o actor se transforman para encarnar a un personaje, por supuesto que su proceso teórico dialoga con el padre del psicoanálisis, su contemporaneo: Sigmund Freud. A partir de Stanislavski empezaron a aparecer una multiplicidad de teorías y escuelas, como el Método de Lee Strasberg -uno muy usado en Hollywood- e incluso escuelas actorales que van en contra del proceso interno del ruso, como la biomecánica de su alumno Meyerhold. El punto es que Stanislavski revolucionó la forma de pensar la actuación y dio pie a la complejidad de lo que es hoy en día.',
+        'El padre de la actuación contemporanea fue un ruso llamado Konstantin Stanislavski; uno de sus libros más importantes "El trabajo del actor sobre sí mismo" fue escrito en 1909, hace 115 años. La forma en la que Stanislavski pensó la actoralidad revolucionó para siempre el trabajo de actrices y actores en un set o un escenario. Antes de él actuar era fingir, Stanislavski empieza a pensar en cómo la psique de una actriz o actor se transforman para encarnar a un personaje, por supuesto que su proceso teórico dialoga con el padre del psicoanálisis, su contemporaneo: Sigmund Freud. A partir de Stanislavski empezaron a aparecer una multiplicidad de teorías y escuelas, como el Método de Lee Strasberg -uno muy usado en Hollywood- e incluso escuelas actorales que van en contra del proceso interno del ruso, como la biomecánica de su alumno Meyerhold. El punto es que Stanislavski revolucionó la forma de pensar la actuación y dio pie a la complejidad de lo que es hoy en día.',
     },
   ];
 

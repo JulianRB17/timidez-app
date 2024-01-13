@@ -6,6 +6,16 @@ const {
   reminder48HtmlEmail,
   reminder24HtmlEmail,
   reminder2HtmlEmail,
+  post2hHtmlEmail,
+  post1dHtmlEmail,
+  post2dHtmlEmail,
+  post3dHtmlEmail,
+  post4dHtmlEmail,
+  post5d12hHtmlEmail,
+  post5d6hHtmlEmail,
+  post5d3hHtmlEmail,
+  post5d30mHtmlEmail,
+  post9dHtmlEmail,
 } = require('./mails');
 const { sendEmail } = require('./sendMail');
 
@@ -70,7 +80,18 @@ const reminder2Email = (user) => {
   sendEmail(user.email, subject, htmlBody);
 };
 
-const setToHappen = (fn, hours, user) => {
+// const setToHappen = (fn, hours, user, pre) => {
+//   const now = new Date().getTime();
+//   const webinarDate = new Date(date).getTime();
+//   const reminderDay = webinarDate - hours * 60 * 60 * 1000;
+//   const timeoutTime = reminderDay - now;
+
+//   if (timeoutTime > 0) {
+//     return setTimeout(fn, timeoutTime, user);
+//   }
+// };
+
+const setToHappen = (fn, hours, user, pre) => {
   const now = new Date().getTime();
   const webinarDate = new Date(date).getTime();
   const reminderDay = webinarDate - hours * 60 * 60 * 1000;

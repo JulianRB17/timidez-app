@@ -29,7 +29,7 @@ export default function HeroVentas() {
         whileInView={{ x: 0, opacity: 1, transition: { duration: 1 } }}
       >
         Las habilidades sociales se puede desarrollar, descubre las técnicas que
-        llevan perfeccionándose 114 años para disminuir el miedo al juicio ajeno
+        llevan perfeccionándose 115 años para disminuir el miedo al juicio ajeno
         y acciónalas en un entorno seguro y de confianza.
       </motion.h1>
       <motion.div
