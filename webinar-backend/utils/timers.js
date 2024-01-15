@@ -80,6 +80,78 @@ const reminder2Email = (user) => {
   sendEmail(user.email, subject, htmlBody);
 };
 
+const post2hEmail = (user) => {
+  const subject = '¿Y si pudiera ser todo diferente?';
+  const htmlBody = post2hHtmlEmail(user);
+
+  sendEmail(user.email, subject, htmlBody);
+};
+
+const post1dEmail = (user) => {
+  const subject =
+    'Si te perdiste la clase gratuita o quisieras volverla a ver:';
+  const htmlBody = post1dHtmlEmail(user);
+
+  sendEmail(user.email, subject, htmlBody);
+};
+
+const post2dEmail = (user) => {
+  const subject = 'Aquí nada más vengo a hacerte un pequeño recordatorio.';
+  const htmlBody = post2dHtmlEmail(user);
+
+  sendEmail(user.email, subject, htmlBody);
+};
+
+const post3dEmail = (user) => {
+  const subject =
+    'Te comparto las preguntas frecuentes que la gente tiene sobre Reconciliandome con mi timidez: herramientas actorales para la vida diaria.';
+  const htmlBody = post3dHtmlEmail(user);
+
+  sendEmail(user.email, subject, htmlBody);
+};
+
+const post4dEmail = (user) => {
+  const subject = '¡Faltan 24 horas!';
+  const htmlBody = post4dHtmlEmail(user);
+
+  sendEmail(user.email, subject, htmlBody);
+};
+
+const post5d12hEmail = (user) => {
+  const subject = '12 horas… sólo 12 horas y nos vamos...';
+  const htmlBody = post5d12hHtmlEmail(user);
+
+  sendEmail(user.email, subject, htmlBody);
+};
+
+const post5d6hEmail = (user) => {
+  const subject = '6 horas y el reloj sigue corriendoooo… 🕒';
+  const htmlBody = post5d6hHtmlEmail(user);
+
+  sendEmail(user.email, subject, htmlBody);
+};
+
+const post5d3hEmail = (user) => {
+  const subject = 'Tick tack, 3 horas dice el reloj, tick... tack';
+  const htmlBody = post5d3hHtmlEmail(user);
+
+  sendEmail(user.email, subject, htmlBody);
+};
+
+const post5d30mEmail = (user) => {
+  const subject = 'Estamos en las últimas 🕒...';
+  const htmlBody = post5d30mHtmlEmail(user);
+
+  sendEmail(user.email, subject, htmlBody);
+};
+
+const post9dEmail = (user) => {
+  const subject = '¡Muchas gracias por todo!';
+  const htmlBody = post9dHtmlEmail(user);
+
+  sendEmail(user.email, subject, htmlBody);
+};
+
 // const setToHappen = (fn, hours, user, pre) => {
 //   const now = new Date().getTime();
 //   const webinarDate = new Date(date).getTime();
@@ -95,23 +167,70 @@ const setToHappen = (fn, hours, user, pre) => {
   const now = new Date().getTime();
   const webinarDate = new Date(date).getTime();
   const reminderDay = webinarDate - hours * 60 * 60 * 1000;
-  const timeoutTime = reminderDay - now;
+  const timeoutTimePre = reminderDay - now;
+  const postDay = webinarDate + hours * 60 * 60 * 1000;
+  const timeoutTimePost = postDay - now;
+  const timeoutPostIntervalFilter = now - webinarDate;
 
-  if (timeoutTime > 0) {
-    return setTimeout(fn, timeoutTime, user);
+  if (pre && timeoutTimePre > 0) {
+    return setTimeout(fn, timeoutTimePre, user);
+  }
+  if (!pre && timeoutPostIntervalFilter < 0) {
+    console.log(timeoutPostIntervalFilter);
+    return setTimeout(fn, timeoutTimePost, user);
   }
 };
 
 const reminder48Timer = (user) => {
-  setToHappen(reminder48Email, 48, user);
+  setToHappen(reminder48Email, 48, user, true);
 };
 
 const reminder24Timer = (user) => {
-  setToHappen(reminder24Email, 24, user);
+  setToHappen(reminder24Email, 24, user, true);
 };
 
 const reminder2Timer = (user) => {
-  setToHappen(reminder2Email, 2, user);
+  setToHappen(reminder2Email, 2, user, true);
+};
+
+const post2hTimer = (user) => {
+  setToHappen(post2hEmail, 2, user, false);
+};
+
+const post1dTimer = (user) => {
+  setToHappen(post1dEmail, 24, user, false);
+};
+
+const post2dTimer = (user) => {
+  setToHappen(post2dEmail, 48, user, false);
+};
+
+const post3dTimer = (user) => {
+  setToHappen(post3dEmail, 3 * 24, user, false);
+};
+
+const post4dTimer = (user) => {
+  setToHappen(post4dEmail, 4 * 24, user, false);
+};
+
+const post5d12hTimer = (user) => {
+  setToHappen(post5d12hEmail, 5 * 24 - 12, user, false);
+};
+
+const post5d6hTimer = (user) => {
+  setToHappen(post5d6hEmail, 5 * 24 - 6, user, false);
+};
+
+const post5d3hTimer = (user) => {
+  setToHappen(post5d3hEmail, 5 * 24 - 3, user, false);
+};
+
+const post5d30mTimer = (user) => {
+  setToHappen(post5d30mEmail, 5 * 24 - 0.5, user, false);
+};
+
+const post9dTimer = (user) => {
+  setToHappen(post9dEmail, 9 * 24, user, false);
 };
 
 const deactivateTimerUser = (user) => {
@@ -132,6 +251,16 @@ const registerUserTimer = (user) => {
   reminder48Timer(user);
   reminder24Timer(user);
   reminder2Timer(user);
+  post2hTimer(user);
+  post1dTimer(user);
+  post2dTimer(user);
+  post3dTimer(user);
+  post4dTimer(user);
+  post5d12hTimer(user);
+  post5d6hTimer(user);
+  post5d3hTimer(user);
+  post5d30mTimer(user);
+  post9dTimer(user);
 };
 
 // const disengageNewUserTimer = (user, next) => {

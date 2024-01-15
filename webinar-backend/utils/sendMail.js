@@ -25,7 +25,12 @@ const sendEmail = catchAsync(async function (userEmail, subject, htmlBody) {
   //   html: htmlBody,
   //   text: convert(htmlBody),
   // });
-  console.log(userEmail, htmlBody, subject);
+  console.log(
+    userEmail,
+    subject,
+    new Date().getMinutes(),
+    new Date().getSeconds()
+  );
 });
 
 module.exports = { sendEmail };
