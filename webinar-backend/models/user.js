@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
-const {
-  disengageNewUserTimer,
-  disengageUserTimer,
-  registerUserTimer,
-} = require('../utils/timers');
+const { disengageUserTimer, registerUserTimer } = require('../utils/timers');
+const catchAsync = require('../utils/catchAsync');
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -64,13 +61,17 @@ userSchema.pre('save', function (next) {
     //   registerUserTimer(this, next);
     // }
     // if (this.reengaged) disengageUserTimer(this, next);
-
     if (this.new) {
       registerUserTimer(this, next);
     }
     disengageUserTimer(this, next);
   }
   next();
+});
+
+userSchema.methods.setNew = catchAsync(async function (user) {
+  user.new = false;
+  await user.save();
 });
 
 module.exports = mongoose.model('User', userSchema);

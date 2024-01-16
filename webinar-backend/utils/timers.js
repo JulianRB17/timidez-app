@@ -31,17 +31,6 @@ const deactivateUser = catchAsync(async (user) => {
   sendEmail(userEmail, subject, htmlBody);
 });
 
-// const disengageNewUser = catchAsync(async (user) => {
-//   const subject = `Hola, ${user.username}, te extrañamos`;
-//   const htmlBody = '<p>Usuario desactivado, una lástima</p>';
-
-//   user.new = false;
-//   user.engaged = false;
-//   await user.save();
-//   sendEmail(user.email, subject, htmlBody);
-//   deactivateTimerUser(user);
-// });
-
 const disengageUser = catchAsync(async (user) => {
   const subject = `Hola, ${user.username}, te extrañamos`;
   const htmlBody = '<p>Usuario desanclado, una lástima</p>';
@@ -148,27 +137,19 @@ const post5d30mEmail = (user) => {
 const post9dEmail = (user) => {
   const subject = '¡Muchas gracias por todo!';
   const htmlBody = post9dHtmlEmail(user);
+  user.setNew(user);
 
   sendEmail(user.email, subject, htmlBody);
 };
 
-// const setToHappen = (fn, hours, user, pre) => {
-//   const now = new Date().getTime();
-//   const webinarDate = new Date(date).getTime();
-//   const reminderDay = webinarDate - hours * 60 * 60 * 1000;
-//   const timeoutTime = reminderDay - now;
-
-//   if (timeoutTime > 0) {
-//     return setTimeout(fn, timeoutTime, user);
-//   }
-// };
-
 const setToHappen = (fn, hours, user, pre) => {
   const now = new Date().getTime();
   const webinarDate = new Date(date).getTime();
-  const reminderDay = webinarDate - hours * 60 * 60 * 1000;
+  // const reminderDay = webinarDate - hours * 60 * 60 * 1000;
+  const reminderDay = webinarDate - hours * 1000;
   const timeoutTimePre = reminderDay - now;
-  const postDay = webinarDate + hours * 60 * 60 * 1000;
+  // const postDay = webinarDate + hours * 60 * 60 * 1000;
+  const postDay = webinarDate + hours * 1000;
   const timeoutTimePost = postDay - now;
   const timeoutPostIntervalFilter = now - webinarDate;
 
@@ -263,19 +244,6 @@ const registerUserTimer = (user) => {
   post9dTimer(user);
 };
 
-// const disengageNewUserTimer = (user, next) => {
-//   if (user) {
-//     setTimeout(
-//       () => disengageNewUser(user),
-//       1000 * 60 * 60 * 24 * 23,
-//       user,
-//       deactivateTimerUser
-//     );
-//   } else {
-//     next(new AppError('Usuario no encontrado', 404));
-//   }
-// };
-
 const disengageUserTimer = (user, next) => {
   if (user) {
     setTimeout(
@@ -290,7 +258,6 @@ const disengageUserTimer = (user, next) => {
 };
 
 module.exports = {
-  // disengageNewUserTimer,
   disengageUserTimer,
   deactivateTimerUser,
   registerUserTimer,
